@@ -1,0 +1,56 @@
+---------- Generated from ../prompts/examples/using_waitgroups.in at 2024-03-06 00:18:59
+
+### Knowledge Bank: 
+WaitGroups in Golang are used to wait for a collection of goroutines to finish. By adding goroutines to the WaitGroup, we can synchronize their completion and ensure they all finish before proceeding. The WaitGroup has three main methods: `Add()`, `Done()`, and `Wait()`, used for adding goroutines, signaling the completion of a goroutine, and waiting for all goroutines to finish, respectively.
+
+### Questions:
+1. 
+    What is the purpose of using a WaitGroup in Golang parallel programming?
+
+    A) Ensures all goroutines are executed simultaneously  
+    - Incorrect. Using a WaitGroup does not ensure simultaneous execution but synchronizes their completion.
+    
+    B) Synchronizes the completion of multiple goroutines  
+    - Correct! WaitGroup is used to synchronize the completion of multiple goroutines before proceeding.
+    
+    C) Halts the execution of goroutines until a condition is met  
+    - Incorrect. WaitGroup does not halt goroutine execution but allows waiting for their completion.
+
+2. 
+    Which method is used to indicate the completion of a goroutine in a WaitGroup?
+
+    A) `Complete()`  
+    - Incorrect. There is no `Complete()` method in WaitGroup; you should use `Done()` to signal completion.
+    
+    B) `Notify()`  
+    - Incorrect. The `Notify()` method is not used with WaitGroup; use `Done()` to indicate completion.
+    
+    C) `Done()`  
+    - Correct! The `Done()` method signals the completion of a goroutine in a WaitGroup.
+
+3. 
+    In the following Go code snippet, what is the missing key step required to ensure all goroutines finish execution using a WaitGroup?
+
+    ```go
+    func main() {
+	    var wg sync.WaitGroup
+	    for i := 0; i < 3; i++ {
+		    wg.Add(1)
+		    go func(id int) {
+			    defer wg.Done()
+			    fmt.Println("Goroutine", id, "completed.")
+		    }(i)
+	    }
+	    // Missing step
+    }
+    ```
+
+    A) Call `wg.Wait()` after the loop  
+    - Correct! `wg.Wait()` is missing and is needed to wait for all added goroutines to finish.
+    
+    B) Add a delay using `time.Sleep()`  
+    - Incorrect. Using `Sleep()` is a workaround but not the correct way to synchronize goroutines with WaitGroup.
+    
+    C) Call `wg.Reset()` at the end of the loop  
+    - Incorrect. `wg.Reset()` is used to reuse the WaitGroup, not for waiting for goroutines to finish.
+

@@ -1,0 +1,50 @@
+---------- Generated from ../prompts/examples/go_language_basics_2.in at 2024-03-06 00:18:51
+
+### Knowledge Bank: Go Language Basics 2
+
+- **Slices:** Dynamic arrays in Go, created using the `make` function or the slice literal syntax `[]`.
+- **Maps:** Key-value pairs used for efficient lookups, created with `make(map[keyType]valueType)` and accessed using bracket notation.
+- **Structs:** Custom data types composed of fields of different types, defined with the `type` keyword.
+- **Functions:** Defined using the `func` keyword, may have multiple return values, and can be passed as arguments or returned from other functions.
+
+### Questions:
+
+MCQ format:
+
+1. What is the correct way to create a new empty slice in Go?
+
+    A) `var s []int`  
+    - Incorrect. This syntax creates a nil slice, not an empty one.
+
+    B) `s := make([]int, 0)`  
+    - Correct. Using the `make` function with a length of 0 creates an empty slice.
+
+    C) `s := []int{}`  
+    - Incorrect. This syntax creates an empty slice using a slice literal, which is also correct but less efficient.
+
+---
+
+2. How are values retrieved from a map in Go?
+
+    A) `value := myMap[key]`  
+    - Correct. Maps are accessed using square brackets with the key.
+
+    B) `value := get(myMap, key)`  
+    - Incorrect. This syntax is not needed as Go provides direct access to map values using keys.
+
+    C) `value := myMap.get(key)`  
+    - Incorrect. Go does not require method calls to access map values; direct key access is sufficient.
+
+---
+
+3. Which keyword is used to define a new type that is composed of other types in Go?
+
+    A) `class`  
+    - Incorrect. Go does not have a `class` keyword; structs are used for type composition.
+
+    B) `struct`  
+    - Correct. In Go, `struct` is used to define custom composite data types.
+
+    C) `type`  
+    - Incorrect. While `type` is used to create custom type aliases, `struct` is specifically for defining new composite types.
+
