@@ -19,14 +19,13 @@ Create new directories as needed in `prompts` and `responses`. Both `generate.py
 
 ## Directory structure
 
-- [`.venv`](./.venv/) is the virtual environment for Python
-    - Needs to be activated to run (see [Setup](#setup))
 - [`prompts`](./prompts/) contains all prompts
     - [`promtps/examples`](./prompts/examples/) contains example prompts
+    - Create additional directories here as needed
 - [`responses`](./responses/) contains all responses
     - [`responses/examples`](./responses/examples/) contains example responses
+    - Create additional directories here as needed
 - [`src`](./src/) contains all Python files
-    - [`__pycache__`](./src/generate_all.py) contains compiled binaries for faster execution (can be ignored)
     - [`generate_all.py`](./src/generate_all.py) generates responses for all prompts in a given directory
     - [`generate.py`](./src/generate.py) generates a response for a single given prompt
     - [`prompting.py`](./src/prompting.py) contains functions for interacting with the Chat Completions API
