@@ -74,7 +74,7 @@ deactivate
 
 ## Running a single prompt (`generate.py`)
 
-> *Make sure to activate the [virtual environment](#virtual-environment) first.*
+> *Make sure to complete the [setup](#setup) first.*
 
 To generate a response for a single prompt, use:
 
@@ -104,7 +104,7 @@ python generate.py examples/using_waitgroups 5
 
 ## Running all prompts in a directory (`generate_all.py`)
 
-> *Make sure to activate the [virtual environment](#virtual-environment) first.*
+> *Make sure to complete the [setup](#setup) first.*
 
 To generate responses for all prompts in a directory, use:
 
