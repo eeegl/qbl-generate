@@ -124,8 +124,8 @@ An example for [`prompts/examples/`](./prompts/examples/using_waitgroups.in):
 
 ```bash
 # 3 questions by default
-python generate.py examples/
+python generate_all.py examples/
 
 # 5 questions
-python generate.py examples/ 5
+python generate_all.py examples/ 5
 ```
