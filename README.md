@@ -109,7 +109,7 @@ python generate.py examples/using_waitgroups 5
 To generate responses for all prompts in a directory, use:
 
 ```bash
-python generate.py <directory-path> [<number-of-questions>]
+python generate_all.py <directory-path> [<number-of-questions>]
 ```
 
 This will generate responses for all prompts in `prompts/<directory-path>` and put the results in `responses/<directory-path>`.
