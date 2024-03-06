@@ -114,7 +114,7 @@ python generate.py <directory-path> [<number-of-questions>]
 
 This will generate responses for all prompts in `prompts/<directory-path>` and put the results in `responses/<directory-path>`.
 
-If not specified, the default number of questions is `3`.
+If not specified, the default number of questions per response is `3`.
 
 **NOTE: The directory path must end with a slash, since it is handled as a file otherwise.**
 
