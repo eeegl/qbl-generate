@@ -4,11 +4,11 @@ Here is the repo for running your prompts locally.
 
 As it is now, for each new skill you have to copy the whole prompt and just replace the skill.
 
-Create new folders as needed in `prompts` and `responses`. Both `generate.py` and `generate_all.py` file and directory arguments are relative to these both directories (see examples below).
+Create new directories as needed in `prompts` and `responses`. Both `generate.py` and `generate_all.py` file and directory arguments are relative to these both directories (see examples below).
 
 ### Table of contents
 
-- [Folder structure](#folder-structure)
+- [Directory structure](#directory-structure)
 - [Setup](#setup)
     - [OpenAI API key](#openai-api-key)
     - [Virtual environment](#virtual-environment)
@@ -17,17 +17,17 @@ Create new folders as needed in `prompts` and `responses`. Both `generate.py` an
 - [Running all prompts in a directory (`generate_all.py`)](#running-all-prompts-in-a-directory-generate_allpy)
     - [Example for prompt directory](#example-for-prompt-directory)
 
-## Folder structure
+## Directory structure
 
 - [`.venv`](./.venv/) is the virtual environment for Python
     - Needs to be activated to run (see [Setup](#setup))
 - [`prompts`](./prompts/) contains all prompts
-    - [`promtps/examples`](./prompts/examples/) example prompts
+    - [`promtps/examples`](./prompts/examples/) contains example prompts
 - [`responses`](./responses/) contains all responses
     - [`responses/examples`](./responses/examples/) contains example responses
 - [`src`](./src/) contains all Python files
     - [`__pycache__`](./src/generate_all.py) contains compiled binaries for faster execution (can be ignored)
-    - [`generate_all.py`](./src/generate_all.py) generates responses for all prompts in a given folder
+    - [`generate_all.py`](./src/generate_all.py) generates responses for all prompts in a given directory
     - [`generate.py`](./src/generate.py) generates a response for a single given prompt
     - [`prompting.py`](./src/prompting.py) contains functions for interacting with the Chat Completions API
     - [`util.py`](./src/util.py) contains utility functions for reading and writing to files
@@ -40,7 +40,7 @@ Store your OpenAI API key in an environmental variable named `OPENAI_API_KEY_KTH
 
 ### Virtual environment
 
-To run you need to setup the Python virtual environment in the `.venv` folder. Navigate to [`src/`](./src/) and use the following command to activate the environment:
+To run you need to setup the Python virtual environment in the `.venv` directory. Navigate to [`src/`](./src/) and use the following command to activate the environment:
 
 ```bash
 source .venv/bin/activate
