@@ -54,3 +54,68 @@ WaitGroups in Golang are used to wait for a collection of goroutines to finish. 
     C) Call `wg.Reset()` at the end of the loop  
     - Incorrect. `wg.Reset()` is used to reuse the WaitGroup, not for waiting for goroutines to finish.
 
+---------- Generated from ../prompts/examples/using_waitgroups.in at 2024-03-06 10:45:29
+
+### Knowledge Bank:
+- WaitGroups in Golang are used to synchronize goroutines by making the main goroutine wait until all other goroutines have finished executing.
+- A WaitGroup must be declared using the `sync` package and then incremented before starting a goroutine. After the goroutine finishes, it should be decremented.
+- The `Wait` method of a WaitGroup blocks until the WaitGroup counter goes back to zero, indicating that all goroutines have completed their execution.
+
+### Questions:
+
+MCQ 1. How can WaitGroups be used in Golang to synchronize the completion of multiple goroutines?
+
+    A) By incrementing the WaitGroup before starting a goroutine and decrementing it after the goroutine finishes.
+    - Correct! WaitGroups are effectively used by incrementing before and decrementing after the goroutine finishes to synchronize their completion.
+
+    B) By printing the output of each goroutine to ensure synchronization.
+    - Incorrect. Although printing output is common for debugging, WaitGroups are used for synchronization purposes.
+
+    C) By using sleep statements in each goroutine to control the execution order.
+    - Incorrect. Using sleep statements is not a best practice for synchronization, as it introduces unnecessary delays.
+
+MCQ 2. Which method of a WaitGroup is used to block the main goroutine until all goroutines have finished?
+
+    A) Wait()
+    - Correct! The `Wait` method blocks until the WaitGroup counter reaches zero, indicating that all goroutines have completed.
+
+    B) Release()
+    - Incorrect. There is no `Release` method in WaitGroup. The correct method is `Wait` for blocking.
+
+    C) Barrier()
+    - Incorrect. There is no `Barrier` method in the WaitGroup; the correct one is `Wait` for synchronization.
+
+MCQ 3. Consider the following Golang code snippet. What is the correct way to synchronize the completion of these goroutines using a WaitGroup?
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+func main() {
+	var wg sync.WaitGroup
+
+	for i := 0; i < 3; i++ {
+		wg.Add(1)
+		go func(num int) {
+			defer wg.Done()
+			fmt.Printf("Goroutine %d\n", num)
+		}(i)
+	}
+
+	wg.Wait()
+}
+```
+
+    A) Increment the WaitGroup inside the goroutine before the deferred call to Done().
+    - Incorrect. Incrementing inside the goroutine can lead to race conditions. The correct way is to increment before starting the goroutine.
+
+    B) Decrement the WaitGroup after the Println statement.
+    - Incorrect. Decrementing should happen using `defer wg.Done()` to ensure it gets decremented after the goroutine finishes.
+
+    C) Increment the WaitGroup before starting each goroutine and defer the Done() call inside the goroutine.
+    - Correct! Incrementing before the goroutine starts and deferring the Done() call inside the goroutine is the correct way to synchronize using WaitGroups in Golang.
+
