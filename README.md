@@ -40,7 +40,7 @@ Store your OpenAI API key in an environmental variable named `OPENAI_API_KEY_KTH
 
 ### Virtual environment
 
-To run you need to setup the Python virtual environment in the `.venv` directory. When in the root [`qbl-generate/`](./) directory, use the following command to create the environment:
+To run you need to setup the Python virtual environment in the `.venv` directory. When in the root `qbl-generate/` directory, use the following command to create the environment:
 
 ```bash
 python3 -m venv .venv
