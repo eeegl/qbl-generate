@@ -3,6 +3,9 @@ import yaml
 import argparse
 from datetime import datetime
 
+##############################
+# File handling
+##############################
 def read_file(path : str) -> str:
     """
     Reads the contents from a file.
@@ -10,7 +13,7 @@ def read_file(path : str) -> str:
     Gives an error if the file does not exist.
     """
     if not os.path.exists(path):
-        raise FileNotFoundError(f"Tried reading from {path} but file does not exist")
+        return "" # To facilitate prepending to file
 
     content = ""
     try:
@@ -23,27 +26,9 @@ def read_file(path : str) -> str:
         exit(1)
     return content
 
-def write_log(path : str,
-              description : str) -> None:
-    """
-    Logs the current time, and `description`, to the file specified by `path`.
-
-    If the file does not exist, it is created first.
-
-    If the file already exists, the log is appended at the end of the file.
-    """
-    try:
-        f = open(path, "a")
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # Format current time
-        f.write(f"---------- Generated {description} at {now}\n\n")
-        f.close()
-    except Exception as e:
-        print(f"Error writing file to {path}")
-        print(e)
-        exit(1)
-
 def write_file(path : str,
-               content : str) -> None:
+               content : str,
+               mode: str = "a") -> None:
     """
     Writes the content to a file.
 
@@ -52,14 +37,48 @@ def write_file(path : str,
     If the file already exists, `content` is appended to the end of the file.
     """
     try:
-        f = open(path, "a")
-        f.write(content + "\n\n")
+
+        os.makedirs(os.path.dirname(path),
+                    exist_ok=True) # Create new directories as needed
+        f = open(path, mode)
+        f.write(content)
         f.close()
     except Exception as e:
         print(f"Error writing file to {path}")
         print(e)
         exit(1)
     return content
+
+def prepend_file(path, content):
+    original_content = read_file(path)
+    write_file(path, content, "w")
+    write_file(path, original_content, "a")
+
+def generate_log(title, config) -> str:
+    """
+    Logs the current time, and `description`, to the file specified by `path`.
+
+    If the file does not exist, it is created first.
+
+    If the file already exists, the log is appended at the end of the file.
+    """
+    date = datetime.now().strftime("%Y-%m-%d") # Format current time
+    time = datetime.now().strftime("%H:%M") # Format current time
+
+    log = "\n---\n\n" # Separate logs, first newline needed in Markdown
+    log += f"### {title}\n\n"
+    log += f"> *Generated on **{date}** at **{time}**. (YYYY-MM-DD)*\n"
+
+    
+    if config["logging_enabled"]:
+        log += f">\n> ```yaml\n"
+        log += f"> # Config used:\n"
+        log += f"> \n"
+        for name, setting in config.items():
+            log += f"> {name}: {setting}\n"
+        log += f"> ```\n"
+
+    return log
 
 def parse_yaml(path):
     with open(path, "r") as file:
@@ -69,58 +88,103 @@ def parse_yaml(path):
 def get_config_defaults(path):
     return parse_yaml(path)
 
-# args : Namespace
-def get_config(config : dict[str, str], args) -> dict[str, str]:
-    # config["prompts_dir"] = args.prompts_dir
-    # config["responses_dir"] = args.responses_dir
+def get_skillmap(config) -> dict[str, str]:
+    skillmap_path = os.path.join(config["root_dir"], config["skillmap_file"])
+    return parse_yaml(skillmap_path)
+
+
+##############################
+# CLI arguments
+##############################
+def apply_cli_args(config):
+    # Read defaults
+    num_questions       = config["num_questions"]
+    prompt_file         = config["prompt_file"]
+    logging_enabled     = config["logging_enabled"]
+    enumeration_enabled = config["enumeration_enabled"]
+    improvement_enabled = config["improvement_enabled"]
+    gpt_model           = config["gpt_model"]
+    timeout             = config["timeout"]
+
+    # Setup CLI arguments
+    parser = argparse.ArgumentParser(description='Generate QBL questions using AI.')
+
+    parser.add_argument('-n', '--num-questions',
+                        type=check_num_questions_range,
+                        default=num_questions,
+                        help='specify how many questions per skill that ' +
+                            f'should be generated (default: {num_questions})')
+    parser.add_argument('-p', '--prompt-file',
+                        default=prompt_file,
+                        help='specify the prompt file to be used'
+                            f'(default: {prompt_file})')
+    parser.add_argument('-u', '--units',
+                        nargs='*', # Allow list of units
+                        help='limit generation to a list of specified units, as named in the skillmap')
+    parser.add_argument('-s', '--skills',
+                        nargs='*', # Allow list of skills
+                        help='limit generation to a list of specified skills, as named in the skillmap')
+    parser.add_argument('-i', '--improvement-enabled',
+                        type=check_boolean,
+                        default=improvement_enabled,
+                        choices=[True, False],
+                        help='specify if an improvement step should be used, ' +
+                             'set to False for saving tokens ' +
+                            f'(default: {improvement_enabled})')
+    parser.add_argument('-l', '--logging-enabled',
+                        type=check_boolean,
+                        default=logging_enabled,
+                        choices=[True, False],
+                        help='specify if the config should ' +
+                            f'be prepended to the output file (default: {logging_enabled})')
+    parser.add_argument('-e', '--enumeration-enabled',
+                        type=check_boolean,
+                        default=enumeration_enabled,
+                        choices=[True, False],
+                        help='specify if the config should ' +
+                            f'be prepended to the output file (default: {enumeration_enabled})')
+    parser.add_argument('-gm', '--gpt-model', default=gpt_model,
+                        choices=["gpt-3.5-turbo", "gpt-4"],
+                        help=f'specify the GPT model to use (default: {gpt_model})')
+    parser.add_argument('-t', '--timeout', type=check_timeout_range, default=timeout,
+                        help=f'specify the timeout (in seconds) for requests (default: {timeout})')
+
+    args = parser.parse_args()
+
+    # Update config with args
     config["prompt_file"] = args.prompt_file
     config["num_questions"] = args.num_questions
     config["gpt_model"] = args.gpt_model
     config["timeout"] = args.timeout
-    config["num_questions"] = args.num_questions
+    config["improvement_enabled"] = args.improvement_enabled
+    config["logging_enabled"] = args.logging_enabled
+    config["enumeration_enabled"] = args.enumeration_enabled
+    config["skills"] = args.skills
+    config["units"] = args.units
+
     return config
 
-def get_skillmap(path : str) -> dict[str, str]:
-    return parse_yaml(path)
-
 def check_num_questions_range(value):
-    max = 30
+    max = 30 # More than 30 questions seems unreasonable
     ivalue = int(value)
     if ivalue <= 0:
-        raise argparse.ArgumentTypeError("expected positive integer, given was %s" % value)
+        raise argparse.ArgumentTypeError(f"expected positive integer, was given {value}")
     if ivalue > max:
-        raise argparse.ArgumentTypeError(f"maximum number of questions is {max}, given was {value}")
+        raise argparse.ArgumentTypeError(f"maximum number of questions is {max}, was given {value}")
     return ivalue
 
 def check_timeout_range(value):
     ivalue = int(value)
     if ivalue <= 0:
-        raise argparse.ArgumentTypeError("expected positive integer, given was %s" % value)
+        raise argparse.ArgumentTypeError(f"expected positive integer, was given {value}")
+    return ivalue
 
-def get_args(config):
-    num_questions = config.get("num_questions")
-    prompt_file = config.get("prompt_file")
-    improvement_enabled = config.get("improvement_enabled")
-    gpt_model = config.get("gpt_model")
-    request_timeout = config.get("request_timeout")
-
-    parser = argparse.ArgumentParser(description='Generate QBL questions using AI.')
-
-    parser.add_argument('-n', '--num-questions', type=check_num_questions_range, default=num_questions,
-                        help=f'specify how many questions per skill that should be generated (default: {num_questions})')
-    parser.add_argument('-p', '--prompt-file', default=prompt_file,
-                        help=f'specify the prompt file to be used (default: {prompt_file})')
-    parser.add_argument('-u', '--unit',
-                        help='limit generation to the specified unit')
-    parser.add_argument('-s', '--skill',
-                        help='limit generation to the specified skill')
-    parser.add_argument('-i', '--improvement-enabled', default=improvement_enabled,
-                        choices=[True, False],
-                        help=f'specify if an improvement step should be used, set to False for saving tokens (default: {improvement_enabled})')
-    parser.add_argument('-gm', '--gpt-model', default=gpt_model,
-                        choices=["gpt-3.5-turbo", "gpt-4"],
-                        help=f'specify the GPT model to use (default: {gpt_model})')
-    parser.add_argument('-t', '--timeout', type=check_timeout_range, default=request_timeout,
-                        help=f'specify the timeout (in seconds) for requests (default: {request_timeout})')
-
-    return parser.parse_args()
+def check_boolean(value):
+    if isinstance(value, bool):
+       return value
+    if value.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif value.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError(f"expected boolean, was given {value}")

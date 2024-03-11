@@ -1,6 +1,5 @@
 #
-# This file lets you customize the behavior of
-# the script.
+# This file lets you customize how the questions are generated.
 #
 # The defaults are chosen to be sensible, but you can
 # change them to suit your specific needs.
@@ -9,22 +8,25 @@
 # Root directory for the script. Must be absolute.
 root_dir: "/Users/orn/Documents/kth/da150x-kex/qbl-generate"
 
-# Path to the skillmap. Must be relative to "root_dir".
-skillmap_path: "skillmap.yaml"
-
 # Directory for storing the prompts. Must be relative to "root_dir".
 prompts_dir: "prompts/" 
 
 # Directory for storing the responses. Must be relative to "root_dir".
 responses_dir: "responses/"
 
+# Path to the skillmap. Must be located in "root_dir".
+skillmap_file: "skillmap.yaml"
+
 # The default prompt file to use. Needs to be stored in "prompts_dir".
 # 
 # Override by running the script with the option "--prompt-file" or "-p"
 prompt_file: "multiple_choice.md"
 
-# Target number of questions to generate per skill. Actual number may vary
-# due to randomness in the GPT model.
+# The improvement prompt file to use. Needs to be stored in "prompts_dir".
+improvement_file: "improvement.md"
+
+# Target number of questions to generate per skill (actual number may vary
+# due to randomness in the GPT model).
 # 
 # Override by running the script with the option "--num-questions" or "-n"
 num_questions: 10
@@ -35,7 +37,17 @@ num_questions: 10
 # Override by running the script with the option "--improvement-enabled" or "-i"
 improvement_enabled: True
 
-# The default ChatGPT model to use. Common options are:
+# Enables logging in the generated files. 
+# 
+# Override by running the script with the option "--logging-enabled" or "-l"
+logging_enabled: True 
+
+# Enables enumeration of generated files to preserve the ordering.
+# 
+# Override by running the script with the option "--enumeration-enabled" or "-e"
+enumeration_enabled: True 
+
+# The default ChatGPT model to use. Allowed options are:
 # 
 # - "gpt-3.5-turbo" (cheaper but worse results)
 # - "gpt-4" (more expensive but better results)
@@ -46,4 +58,4 @@ gpt_model: "gpt-3.5-turbo"
 # Maximum time (in seconds) to wait for a request to complete.
 # 
 # Override by running the script with the option "--timeout" or "-t"
-timeout: 30
+timeout: 60
