@@ -1,7 +1,7 @@
 import os
 import re
 from openai import OpenAI, APIConnectionError
-from util import read_file, prepend_file, generate_log
+from util import read_file, prepend_file, generate_log, get_time
 
 ##############################
 # Question generation
@@ -24,22 +24,29 @@ def generate_questions(config : dict[str, str],
     units = config["units"]
 
     # Indices are used for enumerating the output files and directories.
+    found_match = False
     for unit_index, unit in enumerate(skillmap["units"]):
-        if not skills and units and unit["name"] not in units: 
+        if not config["all"] and not skills and units and unit["name"] not in units: 
             continue
         for skill_index, skill in enumerate(unit["skills"]):
-            if skills and skill["name"] not in skills: 
+            if not config["all"] and skills and skill["name"] not in skills: 
                 continue
+            found_match = True
+
             prompt = insert_skill(prompt_template, skill["aim"])
             improvement = read_file(improvement_path)
 
             # API call
+            print(f"--- Sending request (at {get_time()})\n" +
+                  f"unit: {unit["name"]}\n" +
+                  f"skill: {skill["name"]}")
             response = fetch_gpt_reply(config["gpt_model"],
                                        prompt,
                                        config["num_questions"],
                                        config["timeout"],
                                        config["improvement_enabled"],
                                        improvement)
+            print(f"--- Request successful (at {get_time()})\n")
 
             unit_dir = format_unit_dir_name(unit["name"])
             file_name = format_skill_file_name(skill["name"])
@@ -58,6 +65,9 @@ def generate_questions(config : dict[str, str],
             title = "Response"
             log = generate_log(title, config)
             prepend_file(path, log + "\n")
+    if not found_match:
+        raise ValueError("error: given units or skills not found in skillmap, " +
+                         "make sure spelling and letter case is correct")
 
 ##############################
 # GPT interaction
@@ -89,21 +99,21 @@ def fetch_gpt_reply(model: str,
     )
     
     try:
-        print("--- Sending API request")
-        print("MESSAGES:", messages)
+        # print("MESSAGES:", messages)
         # API call
-        # response = "REGULAR DUMMY RESPONSE"
-        response = fetch_single_response(client, model, messages)
+        response = "REGULAR DUMMY RESPONSE"
+        # response = fetch_single_response(client, model, messages)
 
         if improve_enabled:
+            print(f"--- Sending improvement request (at {get_time()})")
             messages.append(create_message("assistant", response))
             messages.append(create_message("user", improvement_prompt +
                                            "\n\nMake sure there are " +
                                           f"{num_questions} questions."))
-            print("IMPROVEMENT MESSAGES:", messages)
+            # print("IMPROVEMENT MESSAGES:", messages)
             # API call
-            # response = "IMPROVEMENT DUMMY RESPONSE"
-            response = fetch_single_response(client, model, messages)
+            response = "IMPROVEMENT DUMMY RESPONSE"
+            # response = fetch_single_response(client, model, messages)
     except APIConnectionError as e:
         print("The server could not be reached.")
         print(e)
@@ -113,7 +123,6 @@ def fetch_gpt_reply(model: str,
         print(e)
         exit(1)
 
-    print("--- Request was successful")
     # print(f"Received: \n{content}") # For debugging
 
     return response

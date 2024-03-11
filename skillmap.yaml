@@ -1,8 +1,7 @@
 name: "DD1396 Skillmap"
 units:
-  #
+
   # New unit
-  #
   - name: "Week 1 - Introduction to Go"
     skills:
       - name: "Go Language Basics 1"
@@ -19,9 +18,8 @@ units:
         aim: "Be able to use Go's testing framework for writing and running tests."
       - name: "Algorithm implementation"
         aim: "Ability to split a problem into concurrent parts and combine results, specifically implementing a function to sum an array concurrently."
-  #
+
   # New unit
-  #
   - name: "Week 2 - Concurrency Conundrums"
     skills:
       - name: "Identifying Concurrency Issues"
@@ -40,9 +38,8 @@ units:
         aim: "Show insight into different concurrency patterns in Go, such as producer-consumer models."
       - name: "Predict Behaviour"
         aim: "Be able to predict the behavior of concurrent programs and to verify these hypotheses through experimentation and testing."
-  #
+
   # New unit
-  #
   - name: "Week 3 - Parallel Performance"
     skills:
       - name: "Channel Behavior and Synchronization"

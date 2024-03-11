@@ -49,14 +49,14 @@ Begin by generating a short but informative knowledge bank about the skill, with
 End by generating questions of varying difficulty, and provide code snippets to make it more interesting.
 
 MCQ format: ###
-<question number, a single digit starting with 1>. <question>
+<question number, starting with 1>. <question>
 
     A) <plausible answer option>
-    - <unique feedback tailored to A), that does not reveal the answer if incorrect>
+    - <unique feedback tailored to A)>
   
     B)  <plausible answer option>
-    - <unique feedback tailored to B), that does not reveal the answer if incorrect>
+    - <unique feedback tailored to B)>
 
     C)  <plausible answer option>
-    - <unique feedback tailored to C), that does not reveal the answer if incorrect>
+    - <unique feedback tailored to C)>
 ###

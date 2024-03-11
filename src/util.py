@@ -1,4 +1,4 @@
-import os
+import os, sys
 import yaml
 import argparse
 from datetime import datetime
@@ -62,13 +62,11 @@ def generate_log(title, config) -> str:
 
     If the file already exists, the log is appended at the end of the file.
     """
-    date = datetime.now().strftime("%Y-%m-%d") # Format current time
-    time = datetime.now().strftime("%H:%M") # Format current time
+    date, time = get_date_time()
 
     log = "\n---\n\n" # Separate logs, first newline needed in Markdown
     log += f"### {title}\n\n"
     log += f"> *Generated on **{date}** at **{time}**. (YYYY-MM-DD)*\n"
-
     
     if config["logging_enabled"]:
         log += f">\n> ```yaml\n"
@@ -79,6 +77,21 @@ def generate_log(title, config) -> str:
         log += f"> ```\n"
 
     return log
+
+def get_date_time():
+    """
+    Returns the date and current time (`HH:MM`).
+    """
+    date = datetime.now().strftime("%Y-%m-%d") # Format current time
+    time = datetime.now().strftime("%H:%M") # Format current time
+    return [date, time]
+
+def get_time() -> str:
+    """
+    Returns the current time with seconds (`HH:MM:SS`).
+    """
+    time = datetime.now().strftime("%H:%M:%S") # Format current time
+    return time
 
 def parse_yaml(path):
     with open(path, "r") as file:
@@ -118,6 +131,9 @@ def apply_cli_args(config):
                         default=prompt_file,
                         help='specify the prompt file to be used'
                             f'(default: {prompt_file})')
+    parser.add_argument('-a', '--all',
+                        action='store_true',
+                        help='generate questions for all skills in all units')
     parser.add_argument('-u', '--units',
                         nargs='*', # Allow list of units
                         help='limit generation to a list of specified units, as named in the skillmap')
@@ -151,6 +167,9 @@ def apply_cli_args(config):
 
     args = parser.parse_args()
 
+    if not (args.all or args.units or args.skills):
+        parser.error('you must provide at least one of the arguments: --all, --units, or --skills.')
+
     # Update config with args
     config["prompt_file"] = args.prompt_file
     config["num_questions"] = args.num_questions
@@ -159,6 +178,7 @@ def apply_cli_args(config):
     config["improvement_enabled"] = args.improvement_enabled
     config["logging_enabled"] = args.logging_enabled
     config["enumeration_enabled"] = args.enumeration_enabled
+    config["all"] = args.all
     config["skills"] = args.skills
     config["units"] = args.units
 
