@@ -6,25 +6,33 @@
 # change them to suit your specific needs.
 #
 
-# Directory for storing the prompts. Can be relative or absolute.
-prompts_directory: "../prompts" 
+# Root directory for the script. Must be absolute.
+root_dir: "/Users/orn/Documents/kth/da150x-kex/qbl-generate"
 
-# Directory for storing the responses. Can be relative or absolute.
-responses_directory: "../responses"
+# Path to the skillmap. Must be relative to "root_dir".
+skillmap_path: "skillmap.yaml"
 
-# The default prompt file to use. Needs to be stored in "prompts_directory".
+# Directory for storing the prompts. Must be relative to "root_dir".
+prompts_dir: "prompts/" 
+
+# Directory for storing the responses. Must be relative to "root_dir".
+responses_dir: "responses/"
+
+# The default prompt file to use. Needs to be stored in "prompts_dir".
 # 
-# Override by running the script with the option "--prompt" or "-p"
+# Override by running the script with the option "--prompt-file" or "-p"
 prompt_file: "multiple_choice.md"
 
 # Target number of questions to generate per skill. Actual number may vary
 # due to randomness in the GPT model.
 # 
 # Override by running the script with the option "--num-questions" or "-n"
-number_of_questions: 10
+num_questions: 10
 
 # Enables an improvement step resulting in better quality in the responses.
 # This uses additional prompts and more tokens, so disable for token efficiency.
+# 
+# Override by running the script with the option "--improvement-enabled" or "-i"
 improvement_enabled: True
 
 # The default ChatGPT model to use. Common options are:
@@ -38,4 +46,4 @@ gpt_model: "gpt-3.5-turbo"
 # Maximum time (in seconds) to wait for a request to complete.
 # 
 # Override by running the script with the option "--timeout" or "-t"
-request_timeout: 30
+timeout: 30

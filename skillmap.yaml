@@ -1,0 +1,59 @@
+name: "DD1396 Skillmap"
+units:
+  #
+  # New unit
+  #
+  - name: "Week 1 - Introduction to Go"
+    skills:
+      - name: "Go Language Basics 1"
+        aim: "Show an understanding of Go's syntax, such as basic data types, control structures (loops, conditionals), as well as arrays."
+      - name: "Go Language Basics 2"
+        aim: "Show an understanding of Go's syntax, such as slices, maps, structs, and functions."
+      - name: "Deeper Go Concepts"
+        aim: "Be familiar with deeper Go concepts, such as anonymous functions, first order functions, scope, closures, and functions vs. methods."
+      - name: "Concurrency vs. Parallelism"
+        aim: "Show a grasp of the basic concepts of concurrency and parallelism, as well as their differences."
+      - name: "Handling Concurrency in Go"
+        aim: "Show a grasp of how concurrency and parallelism are implemented in Go with goroutines and channels."
+      - name: "Testing in Go"
+        aim: "Be able to use Go's testing framework for writing and running tests."
+      - name: "Algorithm implementation"
+        aim: "Ability to split a problem into concurrent parts and combine results, specifically implementing a function to sum an array concurrently."
+  #
+  # New unit
+  #
+  - name: "Week 2 - Concurrency Conundrums"
+    skills:
+      - name: "Identifying Concurrency Issues"
+        aim: "Be able to detect common concurrency bugs like data races and deadlocks."
+      - name: "Debugging Concurrency Issues"
+        aim: "Be familiar with tools and techniques for finding and fixing bugs in concurrent programs, such as go race or other debugging tools, and to fix the root cause without introducing new bugs."
+      - name: "Using Channels"
+        aim: "Show an understanding of how channels work, including sending and receiving between goroutines, as well as closing channels."
+      - name: "Go Language Basics 3"
+        aim: "Show an understanding of Go's use of pointers, to differentiate between “pass-by-reference” and “pass-by-value”."
+      - name: "Using WaitGroups"
+        aim: "Display knowledge of how to use WaitGroups to synchronize the completion of multiple goroutines."
+      - name: "Managing Goroutines"
+        aim: "Display skill in managing the lifecycle of goroutines, including the creation, execution, and termination of goroutines."
+      - name: "Concurrency Patterns"
+        aim: "Show insight into different concurrency patterns in Go, such as producer-consumer models."
+      - name: "Predict Behaviour"
+        aim: "Be able to predict the behavior of concurrent programs and to verify these hypotheses through experimentation and testing."
+  #
+  # New unit
+  #
+  - name: "Week 3 - Parallel Performance"
+    skills:
+      - name: "Channel Behavior and Synchronization"
+        aim: "Show understanding of the effects of buffered vs. unbuffered channels for communication between goroutines."
+      - name: "Control Flow with select and Channels"
+        aim: "Show a grasp of how the select statement works in conjunction with channels to handle multiple channel operations."
+      - name: "First-Class Functions in Go"
+        aim: "Leverage Go's support for first-class functions to dynamically select functions for runtime execution."
+      - name: "MapReduce"
+        aim: "Show understanding of an elementary MapReduce programming model (and applying it to parallelize word frequency analysis)."
+      - name: "Parallel Computation"
+        aim: "Be able to explain how a task can be broken down into parallel computations to utilize all available CPU cores."
+      - name: "Performance Measurement and Optimization"
+        aim: "Measure performance improvements and understanding the trade-offs between increased parallelism and overhead."

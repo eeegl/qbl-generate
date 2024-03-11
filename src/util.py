@@ -66,10 +66,21 @@ def parse_yaml(path):
             parsed = yaml.safe_load(file)
     return parsed
 
-def get_config(path):
+def get_config_defaults(path):
     return parse_yaml(path)
 
-def get_skillmap(path):
+# args : Namespace
+def get_config(config : dict[str, str], args) -> dict[str, str]:
+    # config["prompts_dir"] = args.prompts_dir
+    # config["responses_dir"] = args.responses_dir
+    config["prompt_file"] = args.prompt_file
+    config["num_questions"] = args.num_questions
+    config["gpt_model"] = args.gpt_model
+    config["timeout"] = args.timeout
+    config["num_questions"] = args.num_questions
+    return config
+
+def get_skillmap(path : str) -> dict[str, str]:
     return parse_yaml(path)
 
 def check_num_questions_range(value):
@@ -87,7 +98,7 @@ def check_timeout_range(value):
         raise argparse.ArgumentTypeError("expected positive integer, given was %s" % value)
 
 def get_args(config):
-    number_of_questions = config.get("number_of_questions")
+    num_questions = config.get("num_questions")
     prompt_file = config.get("prompt_file")
     improvement_enabled = config.get("improvement_enabled")
     gpt_model = config.get("gpt_model")
@@ -95,8 +106,8 @@ def get_args(config):
 
     parser = argparse.ArgumentParser(description='Generate QBL questions using AI.')
 
-    parser.add_argument('-n', '--num-questions', type=check_num_questions_range, default=number_of_questions,
-                        help=f'specify how many questions per skill that should be generated (default: {number_of_questions})')
+    parser.add_argument('-n', '--num-questions', type=check_num_questions_range, default=num_questions,
+                        help=f'specify how many questions per skill that should be generated (default: {num_questions})')
     parser.add_argument('-p', '--prompt-file', default=prompt_file,
                         help=f'specify the prompt file to be used (default: {prompt_file})')
     parser.add_argument('-u', '--unit',
