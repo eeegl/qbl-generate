@@ -1,0 +1,41 @@
+#
+# This file lets you customize the behavior of
+# the script.
+#
+# The defaults are chosen to be sensible, but you can
+# change them to suit your specific needs.
+#
+
+# Directory for storing the prompts. Can be relative or absolute.
+prompts_directory: "../prompts" 
+
+# Directory for storing the responses. Can be relative or absolute.
+responses_directory: "../responses"
+
+# The default prompt file to use. Needs to be stored in "prompts_directory".
+# 
+# Override by running the script with the option "--prompt" or "-p"
+prompt_file: "multiple_choice.md"
+
+# Target number of questions to generate per skill. Actual number may vary
+# due to randomness in the GPT model.
+# 
+# Override by running the script with the option "--num-questions" or "-n"
+number_of_questions: 10
+
+# Enables an improvement step resulting in better quality in the responses.
+# This uses additional prompts and more tokens, so disable for token efficiency.
+improvement_enabled: True
+
+# The default ChatGPT model to use. Common options are:
+# 
+# - "gpt-3.5-turbo" (cheaper but worse results)
+# - "gpt-4" (more expensive but better results)
+# 
+# Override by running the script with the option "--gpt-model" or "-gm"
+gpt_model: "gpt-3.5-turbo"
+
+# Maximum time (in seconds) to wait for a request to complete.
+# 
+# Override by running the script with the option "--timeout" or "-t"
+request_timeout: 30
