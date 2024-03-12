@@ -99,10 +99,11 @@ def fetch_gpt_reply(model: str,
     )
     
     try:
-        # print("MESSAGES:", messages)
+        # print("MESSAGES:", messages) # For debugging
+        # response = "REGULAR DUMMY RESPONSE" # For debugging
+
         # API call
-        response = "REGULAR DUMMY RESPONSE"
-        # response = fetch_single_response(client, model, messages)
+        response = fetch_single_response(client, model, messages)
 
         if improve_enabled:
             print(f"--- Sending improvement request (at {get_time()})")
@@ -110,10 +111,12 @@ def fetch_gpt_reply(model: str,
             messages.append(create_message("user", improvement_prompt +
                                            "\n\nMake sure there are " +
                                           f"{num_questions} questions."))
-            # print("IMPROVEMENT MESSAGES:", messages)
+
+            # print("IMPROVEMENT MESSAGES:", messages) # For debugging
+            # response = "IMPROVEMENT DUMMY RESPONSE" # For debugging
+
             # API call
-            response = "IMPROVEMENT DUMMY RESPONSE"
-            # response = fetch_single_response(client, model, messages)
+            response = fetch_single_response(client, model, messages)
     except APIConnectionError as e:
         print("The server could not be reached.")
         print(e)

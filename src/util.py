@@ -120,17 +120,17 @@ def apply_cli_args(config):
     timeout             = config["timeout"]
 
     # Setup CLI arguments
-    parser = argparse.ArgumentParser(description='Generate QBL questions using AI.')
+    parser = argparse.ArgumentParser(description='Generate QBL questions using ChatGPT.')
 
     parser.add_argument('-n', '--num-questions',
                         type=check_num_questions_range,
                         default=num_questions,
                         help='specify how many questions per skill that ' +
-                            f'should be generated (default: {num_questions})')
+                            f'should be generated (current: {num_questions})')
     parser.add_argument('-p', '--prompt-file',
                         default=prompt_file,
-                        help='specify the prompt file to be used'
-                            f'(default: {prompt_file})')
+                        help='specify the prompt file to be used '
+                            f'(current: {prompt_file})')
     parser.add_argument('-a', '--all',
                         action='store_true',
                         help='generate questions for all skills in all units')
@@ -146,29 +146,30 @@ def apply_cli_args(config):
                         choices=[True, False],
                         help='specify if an improvement step should be used, ' +
                              'set to False for saving tokens ' +
-                            f'(default: {improvement_enabled})')
+                            f'(current: {improvement_enabled})')
     parser.add_argument('-l', '--logging-enabled',
                         type=check_boolean,
                         default=logging_enabled,
                         choices=[True, False],
                         help='specify if the config should ' +
-                            f'be prepended to the output file (default: {logging_enabled})')
+                            f'be prepended to the output file (current: {logging_enabled})')
     parser.add_argument('-e', '--enumeration-enabled',
                         type=check_boolean,
                         default=enumeration_enabled,
                         choices=[True, False],
-                        help='specify if the config should ' +
-                            f'be prepended to the output file (default: {enumeration_enabled})')
+                        help='specify if the output should be enumerated ' +
+                            f'for strict ordering (current: {enumeration_enabled})')
     parser.add_argument('-gm', '--gpt-model', default=gpt_model,
                         choices=["gpt-3.5-turbo", "gpt-4"],
-                        help=f'specify the GPT model to use (default: {gpt_model})')
+                        help=f'specify the GPT model to use (current: {gpt_model})')
     parser.add_argument('-t', '--timeout', type=check_timeout_range, default=timeout,
-                        help=f'specify the timeout (in seconds) for requests (default: {timeout})')
+                        help=f'specify the timeout (in seconds) for requests (current: {timeout})')
 
     args = parser.parse_args()
 
     if not (args.all or args.units or args.skills):
-        parser.error('you must provide at least one of the arguments: --all, --units, or --skills.')
+        parser.error('you must provide at least one of the arguments: ' +
+                     '-a/--all, -u/--units, or -s/--skills.')
 
     # Update config with args
     config["prompt_file"] = args.prompt_file

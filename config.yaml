@@ -58,4 +58,4 @@ gpt_model: "gpt-3.5-turbo"
 # Maximum time (in seconds) to wait for a request to complete.
 # 
 # Override by running the script with the option "--timeout" or "-t"
-timeout: 60
+timeout: 80
