@@ -1,0 +1,8 @@
+# COURSE INFO
+# This course provides a comprehensive introduction to parallel and concurrent programming using Go (Golang).
+# It covers foundational concepts, practical techniques, and performance optimization strategies for leveraging parallelism and concurrency.
+# The course is organized into units and modules, each containing pages that delve into specific topics and skills in Go programming.
+# Comments are provided throughout to guide course designers in understanding the structure and intent of each section.
+
+title: "Introduction to Parallel and Concurrent Programming in Go"
+description: "A course on the foundations, techniques, and performance optimization of parallel and concurrent programming using Go (Golang)"
