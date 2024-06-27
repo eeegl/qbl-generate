@@ -19,7 +19,13 @@ The problem with the old format is that it seems to conflate learning objectives
 
 Hopefully the new format will give a more focused and clear description for generating questions, which could reduce the trial and error needed to generate specific types of questions.
 
-## Explanation
+## Structure
+
+The structure used here is mainly the same, although units have modules, so **Unit > Module > Page** (the old version for DD1396 used **Unit > Page**).
+
+This shouldn't be a problem, since the parser should be able to handle an arbitrary depth of levels (this works for the parsing when uploading to Torus). If that is the case, the user deides on the general structure that fits their needs best, which seems flexible and reasonable.
+
+## Examples
 
 In the example below from the old version, `aim` should probably be a learning goal, but is used a bit fuzzy as both a learning goal and a skill (and the list is called `skills`).
 
