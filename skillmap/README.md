@@ -13,11 +13,15 @@ There is also a [generated skillmap](./skillmap-new-modular-dd1396-chatgpt/) for
 
 For reference, the [old format](./skillmap-old/) is also included.
 
-## Motivation and explanation
+## Motivation
 
 The problem with the old format is that it seems to conflate learning objectives and skills, using only one "level" of description.
 
-In the example below from the old version, `aim` should probably be a learning goal, but is used a bit fuzzy as both a learning goal and a skill (and called `skill`).
+Hopefully the new format will give a more focused and clear description for generating questions, which could reduce the trial and error needed to generate specific types of questions.
+
+## Explanation
+
+In the example below from the old version, `aim` should probably be a learning goal, but is used a bit fuzzy as both a learning goal and a skill (and the list is called `skills`).
 
 ```yaml
 name: "DD1396 Skillmap"
@@ -46,7 +50,7 @@ units:
 So this is what the new format tries to improve upon, by simply letting each page have a learning goal, and a list with skills. Below is what a sample from a unit in the modular version looks like.
 
 ```yaml
- UNIT
+# UNIT
 # This unit introduces Go programming language and its built-in concurrency features, goroutines and channels.
 # It provides foundational knowledge in parallel and concurrent programming concepts using Go.
 title: "Introduction to Parallel and Concurrent Programming in Go"
