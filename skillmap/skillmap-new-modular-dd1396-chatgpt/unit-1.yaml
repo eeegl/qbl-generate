@@ -1,0 +1,27 @@
+# UNIT
+# This unit introduces Go programming language and its built-in concurrency features, goroutines and channels.
+# It provides foundational knowledge in parallel and concurrent programming concepts using Go.
+title: "Introduction to Parallel and Concurrent Programming in Go"
+modules:
+
+  # MODULE
+  # This module covers the basics of Go programming language and its comparison with other languages like Java or Python.
+  # It sets the foundation for understanding Go's unique concurrency model using goroutines and channels.
+  - title: "Fundamentals of Go Programming"
+    pages:
+
+      # PAGE
+      # This page introduces Go as a programming language, including its syntax and key features.
+      - title: "Introduction to Go"
+        objective: "Learn the basics of Go programming language"
+        skills:
+          - "Setup a functioning Go environment"
+          - "Compare and contrast Go with either Java or Python"
+
+      # PAGE
+      # This page explores goroutines and channels as fundamental components of Go's concurrency model.
+      - title: "Concurrency in Go: Goroutines and Channels"
+        objective: "Understand and use goroutines and channels for concurrent programming"
+        skills:
+          - "Use goroutines to achieve concurrency"
+          - "Utilize channels for communication between goroutines"

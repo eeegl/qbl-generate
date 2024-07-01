@@ -1,0 +1,87 @@
+# UNIT
+# This unit serves as the foundational knowledge base for learners new to Acceptance and Commitment Therapy (ACT).
+# It aims to provide an understanding of the basic principles and theoretical underpinnings of ACT.
+# Modules within this unit are designed to build progressively on the learner's knowledge.
+title: "Foundations of ACT"
+modules:
+
+  # MODULE
+  # This module introduces learners to the basic concepts of ACT, including its history and core differences from traditional CBT.
+  # It is essential for learners to grasp these concepts before diving deeper into specific techniques and processes.
+  - title: "Introduction to ACT"
+    pages:
+
+      # PAGE
+      # This page covers the basic overview of ACT, including its historical background and evolution.
+      # It sets the stage for understanding how ACT differs from traditional CBT.
+      - title: "What is ACT?"
+        objective: "Understand the concept and principles of Acceptance and Commitment Therapy (ACT)"
+        skills:
+          - "Overview of Acceptance and Commitment Therapy"
+          - "Discuss historical background and evolution"
+          - "Identify key differences from traditional CBT"
+
+      # PAGE
+      # This page delves into the theoretical foundations of ACT, such as Relational Frame Theory and Functional Contextualism.
+      # Understanding these theories is crucial for comprehending the principles and practices of ACT.
+      - title: "Theoretical Foundations"
+        objective: "Explore the theoretical underpinnings of Acceptance and Commitment Therapy (ACT)"
+        skills:
+          - "Explain Relational Frame Theory (RFT)"
+          - "Describe Functional Contextualism"
+          - "Outline core principles of ACT"
+
+  # MODULE
+  # This module focuses on the six core processes of ACT, each representing a fundamental skill area.
+  # Mastery of these processes is critical for effectively applying ACT in practice.
+  - title: "The Six Core Processes of ACT"
+    pages:
+
+      # PAGE
+      # This page covers cognitive defusion, a key process in ACT. It includes definitions and techniques for practice.
+      - title: "Cognitive Defusion"
+        objective: "Master the concept and techniques of cognitive defusion in ACT"
+        skills:
+          - "Define cognitive defusion and provide examples"
+          - "Demonstrate techniques for cognitive defusion"
+
+      # PAGE
+      # This page focuses on acceptance, a core process in ACT, highlighting the distinction between acceptance and avoidance.
+      # Strategies for fostering acceptance are also covered.
+      - title: "Acceptance"
+        objective: "Understand and apply acceptance strategies in ACT"
+        skills:
+          - "Differentiate acceptance from avoidance"
+          - "Apply strategies to foster acceptance"
+
+      # PAGE
+      # This page covers the importance of mindfulness in ACT, providing exercises to enhance present-moment awareness.
+      - title: "Contact with the Present Moment"
+        objective: "Develop mindfulness skills for enhancing present-moment awareness"
+        skills:
+          - "Discuss the importance of mindfulness in ACT"
+          - "Practice exercises to enhance present-moment awareness"
+
+      # PAGE
+      # This page explains the concept of self-as-context, differentiating it from the self-concept.
+      - title: "Observing the Self"
+        objective: "Understand and apply the concept of self-as-context in ACT"
+        skills:
+          - "Explain the concept of self-as-context"
+          - "Differentiate self-concept from self-as-context"
+
+      # PAGE
+      # This page focuses on values clarification, helping learners identify and articulate personal values.
+      - title: "Values"
+        objective: "Clarify personal values and align them with actions in ACT"
+        skills:
+          - "Identify personal values"
+          - "Articulate and clarify personal values"
+
+      # PAGE
+      # This page covers committed action, guiding learners in setting goals aligned with their values and creating actionable plans.
+      - title: "Committed Action"
+        objective: "Develop skills in setting and achieving goals aligned with values"
+        skills:
+          - "Set goals aligned with personal values"
+          - "Create action plans and overcome barriers"
