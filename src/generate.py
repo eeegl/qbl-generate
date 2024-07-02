@@ -1,14 +1,27 @@
-import sys
-from setup import setup
-from prompting import generate_questions
+import os
+import util
+from generator import Generator
 
-if __name__ == "__main__":
-    config, skillmap = setup()
+SKILLMAP_DIR = util.get_subpath("skillmaps/dd1396/skillmap/")
+PROMPT_DIR = util.get_subpath("prompts/new_prompt/")
+GENERATED_DIR = util.get_subpath("responses/test/")
+generator = Generator(SKILLMAP_DIR, PROMPT_DIR, GENERATED_DIR)
 
-    try:
-        generate_questions(config, skillmap)
-        print("Generation done!")
-    except Exception as e:
-        # raise e # Uncomment for more verbose errors
-        print(e)
-        sys.exit(1)
+page_description = generator.get_page_description(generator.course['units'][0]['content'][0]['content'][1])
+page_file_path = os.path.join(generator.generation_dir, "unit-1", "page-1.yaml")
+
+prompt_subs = {
+    "NUM_QUESTIONS": "10",
+    "QUESTION_TYPE": "MCQ",
+    "DESCRIPTION": str(page_description),
+}
+page = generator.generate_page("prompt.md", prompt_subs)
+
+improvement_subs = {
+    "PAGE": page,
+}
+
+improved_page = generator.generate_page("improvement.md", improvement_subs)
+util.write_file(page_file_path, f"# ---------- NEW PAGE (at {util.get_time()})\n\n")
+util.write_file(page_file_path, improved_page)
+util.write_file(page_file_path, "\n\n")

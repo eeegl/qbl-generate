@@ -3,23 +3,16 @@ import logging
 
 LOGGING_LEVEL = logging.INFO
 
-def log_debug(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        logger.debug(f"Start {func.__name__}, args={args}, kwargs={kwargs}")
-        result = func(*args, **kwargs)
-        logger.debug(f"Done {func.__name__}")
-        return result
-    return wrapper
-
-def log_info(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        logger.info(f"Start {func.__name__}")
-        result = func(*args, **kwargs)
-        logger.info(f"Done {func.__name__}")
-        return result
-    return wrapper
+def log_function(log_level=logging.DEBUG):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            logger.log(log_level, f"Start {func.__name__}, args={args}, kwargs={kwargs}")
+            result = func(*args, **kwargs)
+            logger.log(log_level, f"Done {func.__name__}")
+            return result
+        return wrapper
+    return decorator
 
 # Configure the logging
 logging.basicConfig(level=LOGGING_LEVEL,
