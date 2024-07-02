@@ -6,6 +6,16 @@ from datetime import datetime
 ##############################
 # File handling
 ##############################
+def get_subpath(subpath:str) -> str:
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    resolved_path = os.path.abspath(os.path.join(script_dir, "../", subpath))
+    try:
+        os.makedirs(resolved_path)
+        print(f"Created directory: {resolved_path}")
+    except Exception:
+        pass # Only print when directories are created
+    return resolved_path
+
 def read_file(path : str) -> str:
     """
     Reads the contents from a file.
