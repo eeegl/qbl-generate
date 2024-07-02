@@ -1,0 +1,170 @@
+# ---------- NEW PAGE (at 17:03:55)
+
+objectives:
+  - "Understand and apply goroutines for achieving concurrency"
+  - "Utilize channels for effective communication between goroutines"
+
+questions:
+  - number: 1
+    type: "Multiple Choice Question"
+    question: "What is the primary purpose of using goroutines in Go?"
+    skills:
+      - skill: "Use goroutines to achieve concurrency"
+    options:
+      - answer: "To execute functions concurrently and independently"
+        feedback: "Correct! Goroutines in Go enable functions to run concurrently and independently."
+        correct: yes
+      - answer: "To sequentially execute program tasks"
+        feedback: "Incorrect. Goroutines support concurrency, not sequential execution."
+        correct: no
+      - answer: "To pause program execution for synchronization"
+        feedback: "Incorrect. Goroutines enable concurrent execution, not pausing."
+        correct: no
+
+  - number: 2
+    type: "Multiple Choice Question"
+    question: "What is the main purpose of channels in concurrent programming in Go?"
+    skills:
+      - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "To synchronize data access between goroutines"
+        feedback: "Correct! Channels in Go synchronize data access among goroutines."
+        correct: yes
+      - answer: "To enhance the speed of individual goroutines"
+        feedback: "Incorrect. Channels primarily focus on communication, not speed."
+        correct: no
+      - answer: "To disable goroutines during program execution"
+        feedback: "Incorrect. Channels facilitate communication, not disable goroutines."
+        correct: no
+
+  - number: 3
+    type: "Multiple Choice Question"
+    question: "How does Go manage communication between goroutines using channels?"
+    skills:
+      - skill: "Use goroutines to achieve concurrency"
+      - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "By passing messages through channels"
+        feedback: "Correct! Go enables communication between goroutines by passing messages through channels."
+        correct: yes
+      - answer: "Through direct function calls"
+        feedback: "Incorrect. Communication in Go typically involves channels, not direct calls."
+        correct: no
+      - answer: "By directly sharing variables"
+        feedback: "Incorrect. Directly sharing variables can lead to data races."
+        correct: no
+
+  - number: 4
+    type: "Multiple Choice Question"
+    question: "Which statement best describes a goroutine in Go?"
+    skills:
+      - skill: "Use goroutines to achieve concurrency"
+    options:
+      - answer: "A lightweight thread managed by the Go runtime"
+        feedback: "Correct! Goroutines are lightweight threads managed by the Go runtime."
+        correct: yes
+      - answer: "A heavy process with independent execution"
+        feedback: "Incorrect. Goroutines are lightweight and concurrent, not heavy."
+        correct: no
+      - answer: "A data structure for memory sharing"
+        feedback: "Incorrect. Goroutines are threads for concurrency, not data structures."
+        correct: no
+
+  - number: 5
+    type: "Multiple Choice Question"
+    question: "What is the primary advantage of using channels over shared memory for goroutine communication?"
+    skills:
+      - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "Facilitates clear communication intent and avoids race conditions"
+        feedback: "Correct! Channels provide clear communication and prevent race conditions compared to shared memory."
+        correct: yes
+      - answer: "Easier to implement"
+        feedback: "Incorrect. Channels help prevent race conditions despite requiring explicit creation."
+        correct: no
+      - answer: "Significantly improves program performance"
+        feedback: "Incorrect. Channel usage focuses on safe communication, not performance improvement."
+        correct: no
+
+  - number: 6
+    type: "Multiple Choice Question"
+    question: "What occurs when a value is sent on a channel in Go?"
+    skills:
+      - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "The sending goroutine blocks until the value is received"
+        feedback: "Correct! Sending on a channel blocks the sender until the value is received."
+        correct: yes
+      - answer: "The value is shared with all goroutines"
+        feedback: "Incorrect. Values sent on a channel are received by specific goroutines, not all."
+        correct: no
+      - answer: "The value is discarded if no recipient is available"
+        feedback: "Incorrect. Values wait for a receiver and are not automatically discarded."
+        correct: no
+
+  - number: 7
+    type: "Multiple Choice Question"
+    question: "Which keyword initiates a new goroutine in Go?"
+    skills:
+      - skill: "Use goroutines to achieve concurrency"
+    options:
+      - answer: "go"
+        feedback: "Correct! 'go' is used to create a new goroutine in Go."
+        correct: yes
+      - answer: "start"
+        feedback: "Incorrect. 'start' is not the keyword for goroutine creation in Go."
+        correct: no
+      - answer: "concurrent"
+        feedback: "Incorrect. 'concurrent' is not the keyword to start goroutines in Go."
+        correct: no
+
+  - number: 8
+    type: "Multiple Choice Question"
+    question: "How can deadlocks be prevented when working with channels in Go?"
+    skills:
+      - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "Ensure both sender and receiver are prepared before communication"
+        feedback: "Correct! Preparing both sender and receiver prevents deadlocks."
+        correct: yes
+      - answer: "Introduce more goroutines for each channel"
+        feedback: "Incorrect. Adding more goroutines may not resolve deadlock issues."
+        correct: no
+      - answer: "Introduce a delay in communication"
+        feedback: "Incorrect. Adding delays may lead to complications and should be avoided for deadlocks."
+        correct: no
+
+  - number: 9
+    type: "Multiple Choice Question"
+    question: "What happens if an empty channel is read in Go?"
+    skills:
+      - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "The goroutine blocks until a value is sent on the channel"
+        feedback: "Correct! Reading from an empty channel blocks until a sender is available."
+        correct: yes
+      - answer: "The program exits with an error"
+        feedback: "Incorrect. Reading from an empty channel typically causes blocking, not program termination."
+        correct: no
+      - answer: "The value is silently removed from the channel"
+        feedback: "Incorrect. Reading from an empty channel waits for data rather than discarding it."
+        correct: no
+
+  - number: 10
+    type: "Multiple Choice Question"
+    question: "Which scenario is most suitable for utilizing goroutines and channels in Go?"
+    skills:
+      - skill: "Use goroutines to achieve concurrency"
+      - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "Simple sequential tasks without dependencies"
+        feedback: "Correct! Tasks without dependencies that can run concurrently are well-suited for goroutines and channels."
+        correct: yes
+      - answer: "Heavy computational tasks with complex data sharing"
+        feedback: "Incorrect. Complex data sharing tasks may introduce synchronization challenges."
+        correct: no
+      - answer: "Tasks requiring exclusive access to shared resources"
+        feedback: "Incorrect. Tasks needing exclusive resource access may face contention issues."
+        correct: no
+```
+

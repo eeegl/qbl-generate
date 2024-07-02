@@ -1,0 +1,327 @@
+# ---------- NEW PAGE (at 17:06:22)
+
+objectives:
+  - "Recognize and resolve common concurrency bugs"
+
+questions:
+  - number: 1
+    type: "Multiple Choice Question"
+    question: "What is a common symptom of a data race in concurrent programming?"
+    skills:
+      - skill: "Identify symptoms of data races"
+    options:
+      - answer: "Unexpected program behavior or output inconsistency"
+        feedback: "Correct! Data races can lead to unexpected results due to uncontrolled access to shared data."
+        correct: yes
+      - answer: "Improved program performance"
+        feedback: "Incorrect. Data races do not improve performance but rather introduce bugs."
+        correct: no
+      - answer: "Enhanced code readability"
+        feedback: "Incorrect. Data races do not directly impact code readability."
+        correct: no
+
+  - number: 2
+    type: "Multiple Choice Question"
+    question: "Which of the following is a commonly used synchronization technique in Golang to prevent data races?"
+    skills:
+      - skill: "Implement synchronization techniques"
+    options:
+      - answer: "Mutex"
+        feedback: "Correct! Mutex is frequently used in Golang to synchronize access to shared resources."
+        correct: yes
+      - answer: "Randomization"
+        feedback: "Incorrect. Randomization is not a synchronization technique."
+        correct: no
+      - answer: "Compaction"
+        feedback: "Incorrect. Compaction is not related to synchronization in this context."
+        correct: no
+
+  - number: 3
+    type: "Multiple Choice Question"
+    question: "What happens in a deadlock situation in concurrent programming?"
+    skills:
+      - skill: "Analyze and debug deadlock scenarios"
+    options:
+      - answer: "Two or more threads are unable to proceed because they are each waiting for the other to release a resource"
+        feedback: "Correct! Deadlocks occur when threads are blocked indefinitely waiting for resources held by other threads."
+        correct: yes
+      - answer: "Threads stop executing for a predefined time"
+        feedback: "Incorrect. This describes a different scenario, not a deadlock."
+        correct: no
+      - answer: "Threads keep running independently without synchronization"
+        feedback: "Incorrect. Deadlocks involve a specific blocking situation among threads."
+        correct: no
+
+  - number: 4
+    type: "Multiple Choice Question"
+    question: "Which of the following is an indication of a potential deadlock in a concurrent program?"
+    skills:
+      - skill: "Identify symptoms of data races"
+      - skill: "Analyze and debug deadlock scenarios"
+    options:
+      - answer: "Thread A is holding resource X and waiting for resource Y, while thread B is holding resource Y and waiting for resource X"
+        feedback: "Correct! This scenario with two threads waiting for each other's resources can lead to a deadlock."
+        correct: yes
+      - answer: "Thread A releases all resources before acquiring new ones"
+        feedback: "Incorrect. This does not necessarily lead to a deadlock situation."
+        correct: no
+      - answer: "Threads independently access shared data without coordination"
+        feedback: "Incorrect. This describes a lack of synchronization, not a deadlock."
+        correct: no
+
+  - number: 5
+    type: "Multiple Choice Question"
+    question: "Which synchronization primitive can be used to ensure exclusive access to a resource in concurrent Go programs?"
+    skills:
+      - skill: "Implement synchronization techniques"
+    options:
+      - answer: "Channel"
+        feedback: "Incorrect. Channels are used for communication, not for mutual exclusion."
+        correct: no
+      - answer: "Semaphore"
+        feedback: "Incorrect. Semaphores are more complex than needed for exclusive access to a resource in Go."
+        correct: no
+      - answer: "RWMutex"
+        feedback: "Correct! RWMutex in Go allows multiple readers or a single writer at a time."
+        correct: yes
+
+  - number: 6
+    type: "Multiple Choice Question"
+    question: "What can be a possible consequence of improperly synchronized access to shared data in concurrent programming?"
+    skills:
+      - skill: "Identify symptoms of data races"
+    options:
+      - answer: "Inconsistent or incorrect results due to data races"
+        feedback: "Correct! Improper synchronization can lead to data races and incorrect program behavior."
+        correct: yes
+      - answer: "Faster program execution"
+        feedback: "Incorrect. Improper synchronization can cause issues rather than improve performance."
+        correct: no
+      - answer: "Simplified debugging process"
+        feedback: "Incorrect. Improper synchronization can make debugging more complex."
+        correct: no
+
+  - number: 7
+    type: "Multiple Choice Question"
+    question: "In a concurrent program, what is the purpose of a deadlock detection mechanism?"
+    skills:
+      - skill: "Analyze and debug deadlock scenarios"
+    options:
+      - answer: "Identify and break deadlocks by releasing resources"
+        feedback: "Correct! Deadlock detection mechanisms aim to identify and resolve deadlocks in a program."
+        correct: yes
+      - answer: "Increase the efficiency of thread scheduling"
+        feedback: "Incorrect. Deadlock detection is not primarily about thread scheduling efficiency."
+        correct: no
+      - answer: "Ensure that threads execute in a specific order"
+        feedback: "Incorrect. Deadlock detection is not about enforcing thread execution order."
+        correct: no
+
+  - number: 8
+    type: "Multiple Choice Question"
+    question: "What can happen if two threads attempt to modify a shared variable simultaneously without proper synchronization?"
+    skills:
+      - skill: "Identify symptoms of data races"
+    options:
+      - answer: "Data corruption or unpredictable behavior due to race conditions"
+        feedback: "Correct! Simultaneous unsynchronized access can lead to race conditions and unpredictable outcomes."
+        correct: yes
+      - answer: "Improved data integrity"
+        feedback: "Incorrect. Unsynchronized access does not enhance data integrity."
+        correct: no
+      - answer: "Synchronization of threads for efficient processing"
+        feedback: "Incorrect. Lack of synchronization does not lead to efficient processing in this context."
+        correct: no
+
+  - number: 9
+    type: "Multiple Choice Question"
+    question: "Which synchronization technique allows multiple readers or a single writer at a time to access a resource in Go?"
+    skills:
+      - skill: "Implement synchronization techniques"
+    options:
+      - answer: "Mutex"
+        feedback: "Incorrect. Mutex does not inherently allow multiple readers."
+        correct: no
+      - answer: "RWMutex"
+        feedback: "Correct! RWMutex in Go is designed for this purpose."
+        correct: yes
+      - answer: "WaitGroups"
+        feedback: "Incorrect. WaitGroups are used for synchronization but not for multiple readers/single writer scenarios."
+        correct: no
+
+  - number: 10
+    type: "Multiple Choice Question"
+    question: "What is one of the challenges in debugging deadlock scenarios in concurrent programming?"
+    skills:
+      - skill: "Analyze and debug deadlock scenarios"
+    options:
+      - answer: "Non-deterministic nature of deadlocks can make reproducing them difficult"
+        feedback: "Correct! Deadlocks can be hard to reproduce consistently, adding a challenge to debugging."
+        correct: yes
+      - answer: "Deadlocks always result in a program crash, making them easy to identify"
+        feedback: "Incorrect. Deadlocks may not always result in an immediate program crash."
+        correct: no
+      - answer: "Deadlocks are automatically resolved by the runtime environment"
+        feedback: "Incorrect. Deadlocks need to be identified and resolved by the programmer."
+        correct: no
+
+  - number: 11
+    type: "Multiple Choice Question"
+    question: "What is a potential consequence of using too fine-grained locking in concurrent programming?"
+    skills:
+      - skill: "Understand locking strategies"
+    options:
+      - answer: "Increased overhead and possible performance degradation"
+        feedback: "Correct! Fine-grained locking can lead to increased overhead and performance issues."
+        correct: yes
+      - answer: "Improved scalability and reduced race conditions"
+        feedback: "Incorrect. Fine-grained locking can impact scalability and increase race conditions."
+        correct: no
+      - answer: "Simplified thread management"
+        feedback: "Incorrect. Fine-grained locking may complicate thread management."
+        correct: no
+
+  - number: 12
+    type: "Multiple Choice Question"
+    question: "What is the purpose of the 'go' keyword in Golang with respect to concurrency?"
+    skills:
+      - skill: "Understand Goroutines in Golang"
+    options:
+      - answer: "Start a new Goroutine for concurrent execution"
+        feedback: "Correct! The 'go' keyword is used to launch Goroutines for concurrency."
+        correct: yes
+      - answer: "Enable atomic operations on shared memory"
+        feedback: "Incorrect. The 'go' keyword is related to creating concurrent Goroutines, not atomic operations."
+        correct: no
+      - answer: "Control access to critical sections in code"
+        feedback: "Incorrect. The 'go' keyword does not enforce access control to critical sections."
+        correct: no
+
+  - number: 13
+    type: "Multiple Choice Question"
+    question: "What is an advantage of using channels for communication between Goroutines in Golang?"
+    skills:
+      - skill: "Understand Channel communication in Golang"
+    options:
+      - answer: "Facilitates synchronization and communication in a concurrent setup"
+        feedback: "Correct! Channels help synchronize and communicate between Goroutines."
+        correct: yes
+      - answer: "Improves parallel execution of code sections"
+        feedback: "Incorrect. While channels aid in concurrency, they do not inherently improve parallelism."
+        correct: no
+      - answer: "Enables direct memory sharing between Goroutines"
+        feedback: "Incorrect. Channels promote communication over shared memory."
+        correct: no
+
+  - number: 14
+    type: "Multiple Choice Question"
+    question: "What is a potential issue with using global variables in concurrent programming?"
+    skills:
+      - skill: "Understand shared data issues"
+    options:
+      - answer: "Introducing data races due to concurrent access"
+        feedback: "Correct! Global variables can lead to data races when accessed concurrently."
+        correct: yes
+      - answer: "Enhancing code modularity and reusability"
+        feedback: "Incorrect. Global variables can impact modularity and introduce concurrency issues."
+        correct: no
+      - answer: "Simplifying code maintenance and readability"
+        feedback: "Incorrect. Global variables may complicate maintenance and understanding of concurrency."
+        correct: no
+
+  - number: 15
+    type: "Multiple Choice Question"
+    question: "What is the purpose of a WaitGroup in Golang with respect to managing Goroutines?"
+    skills:
+      - skill: "Understand WaitGroups in Golang"
+    options:
+      - answer: "Synchronize the termination of multiple Goroutines"
+        feedback: "Correct! WaitGroups help coordinate the completion of multiple Goroutines."
+        correct: yes
+      - answer: "Implement mutual exclusion for critical sections"
+        feedback: "Incorrect. WaitGroups are not used for implementing mutual exclusion; they manage Goroutine completion."
+        correct: no
+      - answer: "Control the order of execution of parallel Goroutines"
+        feedback: "Incorrect. WaitGroups do not control the order of Goroutine execution, focusing on synchronization."
+        correct: no
+
+  - number: 16
+    type: "Multiple Choice Question"
+    question: "What design pattern is commonly used in Go when implementing concurrent, parallel processing pipelines?"
+    skills:
+      - skill: "Understand pipeline processing in Go"
+    options:
+      - answer: "Pipeline"
+        feedback: "Correct! The pipeline pattern is frequently used for concurrent, parallel data processing in Go."
+        correct: yes
+      - answer: "Singleton"
+        feedback: "Incorrect. The Singleton pattern is not the primary choice for concurrent pipelines."
+        correct: no
+      - answer: "Observer"
+        feedback: "Incorrect. The Observer pattern is not typically associated with concurrent pipelines."
+        correct: no
+
+  - number: 17
+    type: "Multiple Choice Question"
+    question: "In Go, what type of concurrent data structure is commonly used for safe access across Goroutines?"
+    skills:
+      - skill: "Understand concurrent data structures in Go"
+    options:
+      - answer: "Map with a Mutex"
+        feedback: "Correct! Maps protected by Mutexes are frequently used for concurrent-safe data access."
+        correct: yes
+      - answer: "Array with a Semaphore"
+        feedback: "Incorrect. Arrays with Semaphores are not as common for concurrent data access."
+        correct: no
+      - answer: "Slice with Atomic Operations"
+        feedback: "Incorrect. Slices with Atomic Operations are not the usual choice for concurrent data safety."
+        correct: no
+
+  - number: 18
+    type: "Multiple Choice Question"
+    question: "What potential issue can arise from excessive Goroutine creation in a Go program?"
+    skills:
+      - skill: "Understand Goroutine management in Go"
+    options:
+      - answer: "Increased memory consumption and scheduling overhead"
+        feedback: "Correct! Creating many Goroutines can lead to higher memory usage and scheduling complexities."
+        correct: yes
+      - answer: "Enhanced parallelism without drawbacks"
+        feedback: "Incorrect. Excessive Goroutines can have drawbacks on performance and resources."
+        correct: no
+      - answer: "Simplified code architecture and maintenance"
+        feedback: "Incorrect. Excessive Goroutines may complicate code and maintenance tasks."
+        correct: no
+
+  - number: 19
+    type: "Multiple Choice Question"
+    question: "What is the purpose of a Context in Go when managing Goroutines?"
+    skills:
+      - skill: "Understand Context management in Go"
+    options:
+      - answer: "Control Goroutine cancellation and deadlines"
+        feedback: "Correct! Contexts help manage cancellation and deadlines for Goroutines in Go."
+        correct: yes
+      - answer: "Enable shared memory access across Goroutines"
+        feedback: "Incorrect. Contexts focus on cancellation and deadlines, not shared memory access."
+        correct: no
+      - answer: "Regulate Goroutine execution order"
+        feedback: "Incorrect. Contexts are not designed to regulate Goroutine execution order in Go."
+        correct: no
+
+  - number: 20
+    type: "Multiple Choice Question"
+    question: "What is a common way to handle errors returned by Goroutines in Go for concurrent programming?"
+    skills:
+      - skill: "Understand error handling in Go"
+    options:
+      - answer: "Utilize channels to propagate errors"
+        feedback: "Correct! Channels are often used to pass errors back from Goroutines in Go for handling."
+        correct: yes
+      - answer: "Implement global error flags for centralized tracking"
+        feedback: "Incorrect. Global error flags are not typically the recommended approach for error handling in Goroutines."
+        correct: no
+      - answer: "Ignore errors to maintain program flow"
+        feedback: "Incorrect. Ignoring errors can lead to unhandled issues; proper error handling is preferred."
+        correct: no
+

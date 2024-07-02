@@ -1,0 +1,169 @@
+# ---------- NEW PAGE (at 17:08:34)
+
+objectives:
+  - "Understand the basics of goroutines and channels in Go"
+
+questions:
+  - number: 1
+    type: "Multiple Choice Question"
+    question: "What is the purpose of using goroutines in Go?"
+    skills:
+      - skill: "Create and manage goroutines"
+    options:
+      - answer: "To achieve concurrency by running functions concurrently"
+        feedback: "Correct! Goroutines allow functions to run concurrently, enabling concurrent execution."
+        correct: yes
+      - answer: "To force functions to wait for each other before executing"
+        feedback: "Incorrect. Goroutines allow functions to run concurrently, not wait for each other."
+        correct: no
+      - answer: "To serialize the execution of functions"
+        feedback: "Incorrect. Goroutines aim to achieve concurrency, not serialize execution."
+        correct: no
+      
+  - number: 2
+    type: "Multiple Choice Question"
+    question: "How are channels used for communication between goroutines in Go?"
+    skills:
+      - skill: "Use channels for communication and synchronization"
+    options:
+      - answer: "Channels facilitate communication by allowing goroutines to send and receive data"
+        feedback: "Correct! Channels are used for communication by sending and receiving data between goroutines."
+        correct: yes
+      - answer: "Channels restrict data flow and do not allow communication between goroutines"
+        feedback: "Incorrect. Channels provide a medium for communication, allowing data exchange."
+        correct: no
+      - answer: "Channels are only used for synchronization, not communication"
+        feedback: "Incorrect. While channels aid in synchronization, their primary role is communication."
+        correct: no
+    
+  - number: 3
+    type: "Multiple Choice Question"
+    question: "What happens when a value is sent to a channel in Go and there is no receiver?"
+    skills:
+      - skill: "Use channels for communication and synchronization"
+    options:
+      - answer: "The program will panic"
+        feedback: "Correct! Sending to an unbuffered channel without a receiver will cause a panic."
+        correct: yes
+      - answer: "The value is lost and the program continues"
+        feedback: "Incorrect. Sending to a channel without a receiver will block until a receiver is available or panic."
+        correct: no
+      - answer: "The value is automatically discarded"
+        feedback: "Incorrect. Sending to a channel blocks until a receiver is available or panics."
+        correct: no
+      
+  - number: 4
+    type: "Multiple Choice Question"
+    question: "Which keyword is used to create a goroutine in Go?"
+    skills:
+      - skill: "Create and manage goroutines"
+    options:
+      - answer: "launch"
+        feedback: "Incorrect. The correct keyword to create a goroutine in Go is 'go'."
+        correct: no
+      - answer: "execute"
+        feedback: "Incorrect. 'go' is used to create and start goroutines in Go."
+        correct: no
+      - answer: "go"
+        feedback: "Correct! The 'go' keyword is used to create a new goroutine in Go."
+        correct: yes
+
+  - number: 5
+    type: "Multiple Choice Question"
+    question: "How can deadlock be avoided when using channels in Go?"
+    skills:
+      - skill: "Use channels for communication and synchronization"
+    options:
+      - answer: "Ensuring all channels are unbuffered to prevent deadlock"
+        feedback: "Incorrect. Buffering channels appropriately and using select statements help prevent deadlock."
+        correct: no
+      - answer: "Avoiding channel communication altogether"
+        feedback: "Incorrect. Proper synchronization practices and channel management help prevent deadlock."
+        correct: no
+      - answer: "Properly coordinating channel sends and receives to prevent blocking"
+        feedback: "Correct! Coordinating channel operations can prevent deadlocks in Go."
+        correct: yes
+      
+  - number: 6
+    type: "Multiple Choice Question"
+    question: "What is the purpose of the 'select' statement when working with channels in Go?"
+    skills:
+      - skill: "Use channels for communication and synchronization"
+    options:
+      - answer: "To choose randomly between available channels"
+        feedback: "Incorrect. 'select' is used to wait on multiple communication operations in Go."
+        correct: no
+      - answer: "To block until a specific channel operation is ready"
+        feedback: "Correct! The 'select' statement blocks until one of its cases can proceed, allowing channel communication."
+        correct: yes
+      - answer: "To limit the number of channels that can communicate at a time"
+        feedback: "Incorrect. 'select' enables waiting on multiple channel operations for synchronization."
+        correct: no
+      
+  - number: 7
+    type: "Multiple Choice Question"
+    question: "In Go, what is a buffered channel primarily used for?"
+    skills:
+      - skill: "Use channels for communication and synchronization"
+    options:
+      - answer: "Buffered channels limit the number of values that can be sent"
+        feedback: "Incorrect. Buffered channels can hold multiple values up to their capacity without blocking."
+        correct: no
+      - answer: "Buffered channels provide a mechanism to prevent goroutine execution until data is received"
+        feedback: "Incorrect. Buffered channels are for buffering data and enabling non-blocking sends until the buffer is full."
+        correct: no
+      - answer: "Buffered channels enable non-blocking sending up to their buffer capacity"
+        feedback: "Correct! Buffered channels allow non-blocking sends up to their buffer capacity in Go."
+        correct: yes
+      
+  - number: 8
+    type: "Multiple Choice Question"
+    question: "When a value is received from a closed channel in Go, what happens?"
+    skills:
+      - skill: "Use channels for communication and synchronization"
+    options:
+      - answer: "The program panics"
+        feedback: "Correct! Receiving from a closed channel in Go results in a panic."
+        correct: yes
+      - answer: "The value is silently ignored"
+        feedback: "Incorrect. Receiving from a closed channel yields the zero value immediately in Go."
+        correct: no
+      - answer: "The program waits indefinitely"
+        feedback: "Incorrect. Receiving from a closed channel returns the zero value without blocking."
+        correct: no
+      
+  - number: 9
+    type: "Multiple Choice Question"
+    question: "Which statement best describes the role of channels in Go for inter-goroutine communication?"
+    skills:
+      - skill: "Use channels for communication and synchronization"
+    options:
+      - answer: "Channels allow seamless and efficient communication between independent goroutines"
+        feedback: "Correct! Channels facilitate efficient communication and synchronization between goroutines in Go."
+        correct: yes
+      - answer: "Channels restrict communication to within the same goroutine only"
+        feedback: "Incorrect. Channels are designed for communication between concurrent goroutines, not restricted to a single goroutine."
+        correct: no
+      - answer: "Channels introduce global variables for inter-goroutine communication"
+        feedback: "Incorrect. Channels provide a more controlled and thread-safe mechanism for inter-goroutine communication."
+        correct: no
+      
+  - number: 10
+    type: "Multiple Choice Question"
+    question: "What is the general approach to managing data sharing between goroutines in Go?"
+    skills:
+      - skill: "Create and manage goroutines"
+      - skill: "Use channels for communication and synchronization"
+    options:
+      - answer: "Use channels to facilitate data sharing and synchronization"
+        feedback: "Correct! Channels are commonly used to manage data sharing and synchronization between goroutines in Go."
+        correct: yes
+      - answer: "Encapsulate all shared data in global variables for direct access"
+        feedback: "Incorrect. Direct access to global variables can lead to race conditions in concurrent Go programs."
+        correct: no
+      - answer: "Avoid sharing data altogether to prevent synchronization issues"
+        feedback: "Incorrect. Sharing data between goroutines is common in concurrent programming using channels for synchronization."
+        correct: no
+
+```
+

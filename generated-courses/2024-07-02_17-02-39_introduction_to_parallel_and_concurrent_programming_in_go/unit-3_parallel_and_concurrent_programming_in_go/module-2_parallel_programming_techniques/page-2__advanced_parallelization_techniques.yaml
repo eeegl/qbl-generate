@@ -1,0 +1,169 @@
+# ---------- NEW PAGE (at 17:11:58)
+
+objectives:
+  - "Explore advanced strategies and optimizations for parallel programming in Go"
+
+questions:
+  - number: 1
+    type: "Multiple Choice Question"
+    question: "What is a common challenge when implementing parallel processing in Go alongside communication between goroutines?"
+    skills:
+        - skill: "Apply task decomposition techniques"
+        - skill: "Balance workloads across multiple cores"
+        - skill: "Understand goroutine communication"
+    options:
+      - answer: "Race conditions"
+        feedback: "Correct! Race conditions can occur when multiple goroutines access shared data."
+        correct: yes
+      - answer: "Deadlocks"
+        feedback: "Incorrect. Deadlocks happen when tasks wait indefinitely for each other."
+        correct: no
+      - answer: "Memory leaks"
+        feedback: "Incorrect. Memory leaks involve inefficient memory management, not communication challenges."
+        correct: no
+
+  - number: 2
+    type: "Multiple Choice Question"
+    question: "Which Go concurrency feature allows you to coordinate multiple goroutines sharing data structures safely?"
+    skills:
+        - skill: "Understand goroutine synchronization"
+    options:
+      - answer: "Mutexes"
+        feedback: "Correct! Mutexes help achieve mutual exclusion for shared data access."
+        correct: yes
+      - answer: "Channels"
+        feedback: "Incorrect. Channels are more suitable for communication among goroutines."
+        correct: no
+      - answer: "Select statement"
+        feedback: "Incorrect. The select statement allows goroutines to communicate with multiple channels."
+        correct: no
+
+  - number: 3
+    type: "Multiple Choice Question"
+    question: "Why is it crucial to manage goroutine lifecycles effectively in Go parallel programming?"
+    skills:
+        - skill: "Understand goroutine management"
+    options:
+      - answer: "To prevent resource leaks"
+        feedback: "Correct! Proper management avoids leaving unused resources allocated."
+        correct: yes
+      - answer: "To speed up program execution"
+        feedback: "Incorrect. Goroutine management mainly deals with resource usage, not program speed."
+        correct: no
+      - answer: "To increase code reusability"
+        feedback: "Incorrect. Goroutine lifecycles focus on resource handling, not code reusability."
+        correct: no
+
+  - number: 4
+    type: "Multiple Choice Question"
+    question: "What is a common pitfall when overusing parallelism in Go programs?"
+    skills:
+        - skill: "Understand parallelism pitfalls"
+    options:
+      - answer: "Excessive context switching"
+        feedback: "Correct! Increased context switching can degrade performance due to overhead."
+        correct: yes
+      - answer: "Decreased memory usage"
+        feedback: "Incorrect. More parallelism can often lead to higher memory usage."
+        correct: no
+      - answer: "Enhanced code readability"
+        feedback: "Incorrect. Code readability is usually unaffected by parallelism usage."
+        correct: no
+
+  - number: 5
+    type: "Multiple Choice Question"
+    question: "What is a key advantage of using the 'sync' package in Go for synchronization?"
+    skills:
+        - skill: "Understand synchronization primitives in Go"
+    options:
+      - answer: "Support for multiple synchronization techniques"
+        feedback: "Correct! The 'sync' package provides various synchronization primitives."
+        correct: yes
+      - answer: "Direct hardware access"
+        feedback: "Incorrect. The 'sync' package operates at a higher level than hardware access."
+        correct: no
+      - answer: "Automated memory management"
+        feedback: "Incorrect. Memory management is separate from synchronization in Go."
+        correct: no
+
+  - number: 6
+    type: "Multiple Choice Question"
+    question: "What can happen if goroutines spawned in a loop are not handled correctly in Go parallel programming?"
+    skills:
+        - skill: "Understand goroutine management"
+    options:
+      - answer: "Resource exhaustion"
+        feedback: "Correct! Creating too many goroutines can exhaust system resources."
+        correct: yes
+      - answer: "Enhanced program speed"
+        feedback: "Incorrect. Incorrect handling of goroutines can lead to resource issues, not speed improvements."
+        correct: no
+      - answer: "Reduction in parallelism"
+        feedback: "Incorrect. Incorrect handling may lead to resource-heavy creation, not less parallelism."
+        correct: no
+
+  - number: 7
+    type: "Multiple Choice Question"
+    question: "What is a critical factor to consider when deciding the granularity of tasks in parallel Go programs?"
+    skills:
+        - skill: "Understand task granularity in parallelism"
+    options:
+      - answer: "Balancing overhead and workload"
+        feedback: "Correct! Task granularity should balance minimizing overhead while utilizing processor cores effectively."
+        correct: yes
+      - answer: "Prioritizing code readability"
+        feedback: "Incorrect. Task granularity focuses on performance and parallelism, not just readability."
+        correct: no
+      - answer: "Maximizing cache utilization"
+        feedback: "Incorrect. Cache utilization is important but not the primary concern in task granularity."
+        correct: no
+
+  - number: 8
+    type: "Multiple Choice Question"
+    question: "What is a common challenge when managing shared data access among goroutines in parallel Go programs?"
+    skills:
+        - skill: "Understand goroutine synchronization"
+    options:
+      - answer: "Race conditions"
+        feedback: "Correct! Race conditions can occur when multiple goroutines access shared data without proper synchronization."
+        correct: yes
+      - answer: "Task prioritization conflicts"
+        feedback: "Incorrect. Task prioritization is not the primary challenge in shared data access."
+        correct: no
+      - answer: "CPU utilization discrepancies"
+        feedback: "Incorrect. CPU utilization variations are not directly related to shared data access challenges."
+        correct: no
+
+  - number: 9
+    type: "Multiple Choice Question"
+    question: "Why is it important to minimize shared mutation of variables in concurrent Go programs?"
+    skills:
+        - skill: "Understand concurrent programming best practices"
+    options:
+      - answer: "To prevent data races"
+        feedback: "Correct! Minimizing shared mutation helps avoid data race conditions."
+        correct: yes
+      - answer: "To increase cache hits"
+        feedback: "Incorrect. Shared mutation primarily affects data consistency, not cache performance."
+        correct: no
+      - answer: "To improve compilation times"
+        feedback: "Incorrect. Compilation times are not directly impacted by shared mutation in runtime."
+        correct: no
+
+  - number: 10
+    type: "Multiple Choice Question"
+    question: "Which factor should be carefully assessed when deciding the order of execution for concurrent tasks in Go programs?"
+    skills:
+        - skill: "Understand task scheduling in concurrent Go programs"
+    options:
+      - answer: "Dependency relationships"
+        feedback: "Correct! Understanding dependencies ensures tasks are executed in the correct order."
+        correct: yes
+      - answer: "Physical memory availability"
+        feedback: "Incorrect. Memory availability is more about resource constraints than task ordering."
+        correct: no
+      - answer: "Optimizing for network speed"
+        feedback: "Incorrect. Network speed optimizations are relevant for network operations, not task ordering."
+        correct: no
+```
+

@@ -1,0 +1,185 @@
+# ---------- NEW PAGE (at 17:10:31)
+
+```yaml
+objective: "Understand methods for parallelizing computations in Go"
+questions:
+  - number: 1
+    type: "Multiple Choice Question"
+    question: "What is a goroutine in Go used for?"
+    skills:
+      - skill: "Use goroutines to achieve parallelism"
+    options:
+      - answer: "To perform concurrent tasks concurrently"
+        feedback: "Correct! Goroutines are used to achieve concurrency in Go by executing functions concurrently."
+        correct: yes
+      - answer: "To execute tasks sequentially"
+        feedback: "Incorrect. Goroutines in Go are meant for concurrent execution, not sequential."
+        correct: no
+      - answer: "To handle errors in the program"
+        feedback: "Incorrect. Goroutines are not specifically for error-handling but for concurrent execution."
+        correct: no
+
+  - number: 2
+    type: "Multiple Choice Question"
+    question: "How does Go facilitate parallelism with goroutines?"
+    skills:
+      - skill: "Use goroutines to achieve parallelism"
+    options:
+      - answer: "By running goroutines on multiple processors"
+        feedback: "Correct! Go scheduler can distribute goroutines across multiple processors for parallel execution."
+        correct: yes
+      - answer: "By limiting the number of goroutines to one"
+        feedback: "Incorrect. Go allows multiple goroutines to run concurrently for parallelism, not limited to one."
+        correct: no
+      - answer: "By ensuring each goroutine runs in isolation"
+        feedback: "Incorrect. Goroutines in Go can communicate and share memory, enabling parallelism."
+        correct: no
+
+  - number: 3
+    type: "Multiple Choice Question"
+    question: "What is the significance of efficient parallel algorithms in Go?"
+    skills:
+      - skill: "Implement efficient parallel algorithms"
+    options:
+      - answer: "Reduced memory consumption"
+        feedback: "Incorrect. Efficient parallel algorithms may not always relate directly to reduced memory consumption."
+        correct: no
+      - answer: "Improved performance by utilizing multiple cores"
+        feedback: "Correct! Efficient parallel algorithms in Go make the best use of multiple cores for enhanced performance."
+        correct: yes
+      - answer: "Simplified code structure"
+        feedback: "Incorrect. Efficiency in parallel algorithms is more about performance than code simplification."
+        correct: no
+
+  - number: 4
+    type: "Multiple Choice Question"
+    question: "When dividing tasks for parallel execution, what should be considered?"
+    skills:
+      - skill: "Divide tasks for parallel execution"
+    options:
+      - answer: "Independence of tasks"
+        feedback: "Correct! Dividing tasks for parallel execution requires them to be independent to avoid dependencies."
+        correct: yes
+      - answer: "Complexity of tasks"
+        feedback: "Incorrect. While complexity matters, independence is crucial when dividing tasks for parallel execution."
+        correct: no
+      - answer: "Sequential order of tasks"
+        feedback: "Incorrect. Tasks should be independent, not necessarily in a sequential order when parallelizing."
+        correct: no
+
+  - number: 5
+    type: "Multiple Choice Question"
+    question: "What is a key benefit of using goroutines over threads in Go?"
+    skills:
+      - skill: "Use goroutines to achieve parallelism"
+    options:
+      - answer: "Lower memory usage"
+        feedback: "Incorrect. Goroutines might be more lightweight than threads but not particularly for lower memory usage."
+        correct: no
+      - answer: "Faster creation and efficient handling"
+        feedback: "Correct! Goroutines have faster creation and efficient handling compared to threads, making them beneficial in Go."
+        correct: yes
+      - answer: "Increased thread safety"
+        feedback: "Incorrect. Thread safety may relate more to the program's design rather than using goroutines over threads."
+        correct: no
+
+  - number: 6
+    type: "Multiple Choice Question"
+    question: "Why is it important to understand how to divide tasks for parallel execution in Go?"
+    skills:
+      - skill: "Divide tasks for parallel execution"
+    options:
+      - answer: "Ensures efficient resource utilization"
+        feedback: "Correct! Properly dividing tasks ensures optimal resource utilization for parallel execution in Go."
+        correct: yes
+      - answer: "Reduces the need for error handling"
+        feedback: "Incorrect. While proper task division may aid error management, it is more about resource utilization."
+        correct: no
+      - answer: "Simplifies code readability"
+        feedback: "Incorrect. Task division for parallel execution primarily focuses on efficiency, not code readability."
+        correct: no
+
+  - number: 7
+    type: "Multiple Choice Question"
+    question: "Which aspect is crucial for implementing efficient parallel algorithms in Go?"
+    skills:
+      - skill: "Implement efficient parallel algorithms"
+    options:
+      - answer: "Minimizing shared memory access"
+        feedback: "Correct! Minimizing shared memory access is crucial for efficient parallel algorithms in Go."
+        correct: yes
+      - answer: "Increasing inter-goroutine communication"
+        feedback: "Incorrect. While communication is important, minimizing shared memory access is more crucial for efficiency."
+        correct: no
+      - answer: "Using complex data structures"
+        feedback: "Incorrect. The use of data structures is important but not a key aspect for implementing efficient parallel algorithms."
+        correct: no
+
+  - number: 8
+    type: "Multiple Choice Question"
+    question: "In Go, what does it mean to 'fan-out' when designing parallel algorithms?"
+    skills:
+      - skill: "Divide tasks for parallel execution"
+      - skill: "Implement efficient parallel algorithms"
+    options:
+      - answer: "Distributing tasks to multiple workers for parallel processing"
+        feedback: "Correct! 'Fan-out' in Go involves distributing tasks across multiple workers for parallel processing."
+        correct: yes
+      - answer: "Combining multiple tasks into a single execution"
+        feedback: "Incorrect. 'Fan-out' focuses on distributing tasks, not combining them for a single execution."
+        correct: no
+      - answer: "Sequentially executing tasks in a loop"
+        feedback: "Incorrect. 'Fan-out' involves parallel distribution of tasks, not sequential execution in a loop."
+        correct: no
+
+  - number: 9
+    type: "Multiple Choice Question"
+    question: "What is the primary purpose of parallelizing computations in Go using goroutines?"
+    skills:
+      - skill: "Use goroutines to achieve parallelism"
+      - skill: "Implement efficient parallel algorithms"
+    options:
+      - answer: "Increased program complexity"
+        feedback: "Incorrect. The primary purpose of using goroutines for parallelism is not to increase program complexity."
+        correct: no
+      - answer: "Improved performance through parallel execution"
+        feedback: "Correct! Parallelizing computations with goroutines in Go aims to enhance performance through parallel execution."
+        correct: yes
+      - answer: "Reduced code reusability"
+        feedback: "Incorrect. Parallelization aims to improve performance and efficiency, rather than reduce code reusability."
+        correct: no
+
+  - number: 10
+    type: "Multiple Choice Question"
+    question: "When implementing parallel algorithms in Go, why is it important to consider load balancing?"
+    skills:
+      - skill: "Use goroutines to achieve parallelism"
+      - skill: "Implement efficient parallel algorithms"
+    options:
+      - answer: "To evenly distribute tasks among goroutines for optimal performance"
+        feedback: "Correct! Load balancing ensures an even distribution of tasks for optimal performance in parallel algorithms."
+        correct: yes
+      - answer: "To increase memory consumption for better efficiency"
+        feedback: "Incorrect. Load balancing aims to optimize performance, not increase memory consumption."
+        correct: no
+      - answer: "To minimize the use of goroutines for simplicity"
+        feedback: "Incorrect. Load balancing in parallel algorithms focuses on task distribution for better performance, not simplicity."
+        correct: no
+
+  - number: 11
+    type: "Multiple Choice Question"
+    question: "What is the role of the 'go' keyword in goroutine creation in Go?"
+    skills:
+      - skill: "Use goroutines to achieve parallelism"
+    options:
+      - answer: "Initiates a new goroutine for concurrent execution"
+        feedback: "Correct! The 'go' keyword is used to start a new goroutine in Go for concurrent execution."
+        correct: yes
+      - answer: "Signals the end of the main program"
+        feedback: "Incorrect. The 'go' keyword does not signal the end of the program but starts a concurrent goroutine."
+        correct: no
+      - answer: "Pauses the execution of the current function"
+        feedback: "Incorrect. The 'go' keyword does not pause the function but starts a new goroutine for concurrent tasks."
+        correct: no
+```      
+

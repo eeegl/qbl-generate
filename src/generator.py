@@ -11,8 +11,8 @@ class Generator:
         self.prompt_dir = prompt_dir
         self.generation_dir = generation_dir
         self.course = SkillmapParser(skillmap_dir, self.INFO_FILE).parse_course()
-        self.container_names = ["Unit", "Module", "Section"]
-        self.page_name = "Page"
+        self.container_prefixes = ["Unit", "Module", "Section"]
+        self.page_prefix = "Page"
 
     def create_message(self, role:str, message:str) -> dict[str,str]:
         return { "role": role, "content": message }
@@ -86,49 +86,44 @@ class Generator:
         title = self.course['title']
         return self.format_name(prefix, title)
 
-    def generate_contents(self, path:str, contents:list[dict], names:list[str]) -> None:
-        prefix = names.pop(0) if len(names) > 1 else names[0]
+    def get_next_prefix(self, prefixes:list[str]) -> str:
+        return prefixes.pop(0) if len(prefixes) > 1 else prefixes[0]
 
+    def generate_contents(self, path:str, contents:list[dict], prefixes:list[str]) -> None:
+        prefix = self.get_next_prefix(prefixes)
+        prompt_subs = {
+            "NUM_QUESTIONS": "10",
+            "QUESTION_TYPE": "MCQ",
+        }
         for i, content in enumerate(contents):
             title = content['title']
 
             if not self.is_page(content):
                 dir_name = self.format_name(f"{prefix}-{i+1}", title)
                 subpath = os.path.join(path, dir_name)
-                self.generate_contents(subpath, content['content'], names)
+                self.generate_contents(subpath, content['content'], prefixes)
                 logger.info(f"Generated unit {dir_name}")
-                logger.info(f"At {subpath}")
             else:
                 page = content
-                page_description = util.get_page_description(page)
-                page_file_name = self.format_name(f"{self.page_name}-{i+1})", title, ".yaml")
+                prompt_subs['DESCRIPTION'] = util.get_page_description(page)
+                page_file_name = self.format_name(f"{self.page_prefix}-{i+1})", title, ".yaml")
                 page_file_path = os.path.join(path, page_file_name)
 
-                prompt_subs = {
-                    "NUM_QUESTIONS": "10",
-                    "QUESTION_TYPE": "MCQ",
-                    "DESCRIPTION": str(page_description),
-                }
-                page = self.generate_page("prompt.md", prompt_subs)
+                page_content = self.generate_page("prompt.md", prompt_subs)
+                prompt_subs["PAGE"] = page_content
+                improved_page = self.generate_page("improvement.md", prompt_subs)
 
-                improvement_subs = {
-                    "PAGE": page,
-                }
-
-                improved_page = self.generate_page("improvement.md", improvement_subs)
-                util.write_file(page_file_path, f"# ---------- NEW PAGE (at {util.get_time()})\n\n")
-                util.write_file(page_file_path, improved_page)
-                util.write_file(page_file_path, "\n\n")
+                timestamp = f"# ---------- NEW PAGE (at {util.get_time()})\n\n"
+                util.write_file(page_file_path, timestamp + improved_page)
 
     def generate_course(self):
         course_dir = os.path.join(self.generation_dir, self.create_course_dir_name())
         util.create_dir(course_dir)
         for i, unit in enumerate(self.course['units']):
-            container_names = [name for name in self.container_names]
-            prefix = container_names.pop(0)
+            prefixes = [prefix for prefix in self.container_prefixes]
             title = unit['title']
             content = unit['content']
-            dir_name = self.format_name(f"{prefix}-{i+1}", title)
+            dir_name = self.format_name(f"{self.get_next_prefix(prefixes)}-{i+1}", title)
             dir_path = os.path.join(course_dir, dir_name)
             util.create_dir(dir_path)
-            self.generate_contents(dir_path, content, container_names)
+            self.generate_contents(dir_path, content, prefixes)

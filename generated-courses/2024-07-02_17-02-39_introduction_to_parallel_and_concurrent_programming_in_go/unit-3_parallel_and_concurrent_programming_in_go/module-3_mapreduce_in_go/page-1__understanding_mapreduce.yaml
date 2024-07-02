@@ -1,0 +1,70 @@
+# ---------- NEW PAGE (at 17:12:18)
+
+objectives:
+  - "Learn the MapReduce programming model and its application in Go"
+
+questions:
+  - number: 1
+    type: "Multiple Choice Question"
+    question: "What is the purpose of the Map phase in a MapReduce framework?"
+    skills:
+        - skill: "Implement the Map phase for data parallelism"
+    options:
+      - answer: "To process and transform input data into key-value pairs"
+        feedback: "Correct! The Map phase processes and transforms input data into key-value pairs."
+        correct: yes
+      - answer: "To aggregate and summarize the data"
+        feedback: "Incorrect. Aggregating and summarizing data is typically done in the Reduce phase."
+        correct: no
+      - answer: "To filter and sort the data"
+        feedback: "Incorrect. Filtering and sorting data can be part of the Map phase, but the primary purpose is different."
+        correct: no
+
+  - number: 2
+    type: "Multiple Choice Question"
+    question: "Which phase is responsible for aggregating results from the Map phase in a MapReduce job?"
+    skills:
+      - skill: "Execute the Reduce phase for aggregating results"
+    options:
+      - answer: "Combine the output of the Map phase into a final result"
+        feedback: "Correct! The Reduce phase aggregates the output of the Map phase into a final result."
+        correct: yes
+      - answer: "Generate intermediate key-value pairs for further processing"
+        feedback: "Incorrect. Generating intermediate key-value pairs is typically done in the Map phase."
+        correct: no
+      - answer: "Filter out unnecessary data before final output"
+        feedback: "Incorrect. Filtering data is not the primary goal of the Reduce phase."
+        correct: no
+
+  - number: 3
+    type: "Multiple Choice Question"
+    question: "How can computations be scaled for large datasets in Go when implementing MapReduce?"
+    skills:
+      - skill: "Scale computations for large datasets using Go"
+    options:
+      - answer: "Utilize distributed computing and parallelism"
+        feedback: "Correct! Scaling computations for large datasets often involves distributed computing and parallelism."
+        correct: yes
+      - answer: "Sequential processing of data to maintain accuracy"
+        feedback: "Incorrect. Sequential processing is not ideal for scaling computations on large datasets."
+        correct: no
+      - answer: "Reduce the dataset size to minimize computational load"
+        feedback: "Incorrect. Reducing dataset size is not the primary method for scaling computations."
+        correct: no
+
+  - number: 4
+    type: "Multiple Choice Question"
+    question: "What is the main advantage of using Go for implementing a MapReduce framework compared to other languages?"
+    skills:
+      - skill: "Identify advantages of Go for MapReduce implementation"
+    options:
+      - answer: "Concurrency support and simplicity in managing goroutines"
+        feedback: "Correct! Go provides excellent support for concurrency and makes managing goroutines easier."
+        correct: yes
+      - answer: "Heavy static typing that ensures data integrity"
+        feedback: "Incorrect. While Go has static typing, this is not the main advantage for MapReduce implementations."
+        correct: no
+      - answer: "Mainly functional programming paradigm for data processing"
+        feedback: "Incorrect. Go is not purely functional programming and offers more than just that for MapReduce."
+        correct: no
+

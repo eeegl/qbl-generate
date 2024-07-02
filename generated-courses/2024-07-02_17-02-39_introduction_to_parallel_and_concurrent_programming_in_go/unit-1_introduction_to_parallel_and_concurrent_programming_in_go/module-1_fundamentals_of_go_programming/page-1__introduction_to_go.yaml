@@ -1,0 +1,86 @@
+# ---------- NEW PAGE (at 17:03:05)
+
+objectives:
+  - "Understand the characteristics and features of the Go programming language"
+
+questions:
+  - number: 1
+    type: "Multiple Choice Question"
+    question: "Which of the following is a characteristic of the Go programming language?"
+    skills:
+      - skill: "Identify characteristics of the Go programming language"
+    options:
+      - answer: "Automatic garbage collection"
+        feedback: "Correct! Go has automatic garbage collection to manage memory."
+        correct: yes
+      - answer: "Manual memory management"
+        feedback: "Incorrect. Go uses automatic garbage collection for memory management."
+        correct: no
+      - answer: "Limited concurrency support"
+        feedback: "Incorrect. Go is known for its strong support for concurrency."
+        correct: no
+
+  - number: 2
+    type: "Multiple Choice Question"
+    question: "How is the Go playground best described?"
+    skills:
+      - skill: "Understand the purpose of the Go playground"
+    options:
+      - answer: "An online tool for trying out Go code snippets"
+        feedback: "Correct! The Go playground allows users to write and run Go code online."
+        correct: yes
+      - answer: "A local integrated development environment (IDE) for Go"
+        feedback: "Incorrect. The Go playground is an online tool, not a local IDE."
+        correct: no
+      - answer: "A feature for debugging Go applications"
+        feedback: "Incorrect. The Go playground is primarily used for coding and testing snippets."
+        correct: no
+
+  - number: 3
+    type: "Multiple Choice Question"
+    question: "Which statement is true about Go compared to Java?"
+    skills:
+      - skill: "Differentiate between Go and Java"
+    options:
+      - answer: "Go is compiled to machine code directly"
+        feedback: "Correct! Go is compiled directly to machine code, unlike Java."
+        correct: yes
+      - answer: "Java is a statically typed language like Go"
+        feedback: "Incorrect. While both languages are statically typed, Java compiles to bytecode."
+        correct: no
+      - answer: "Go uses the Java Virtual Machine (JVM)"
+        feedback: "Incorrect. Go does not rely on the JVM like Java does."
+        correct: no
+
+  - number: 4
+    type: "Multiple Choice Question"
+    question: "What feature of Go distinguishes it from Python?"
+    skills:
+      - skill: "Compare Go with Python"
+    options:
+      - answer: "Static typing"
+        feedback: "Correct! Go is statically typed, unlike Python which is dynamically typed."
+        correct: yes
+      - answer: "Interpreted execution"
+        feedback: "Incorrect. Go is compiled, not interpreted like Python."
+        correct: no
+      - answer: "Built-in garbage collection"
+        feedback: "Incorrect. Both Go and Python have built-in garbage collection."
+        correct: no
+
+  - number: 5
+    type: "Multiple Choice Question"
+    question: "How does Go handle concurrency in comparison to Python?"
+    skills:
+      - skill: "Understand concurrency in Go compared to Python"
+    options:
+      - answer: "Go uses goroutines for concurrency"
+        feedback: "Correct! Go utilizes lightweight goroutines for concurrent programming."
+        correct: yes
+      - answer: "Python uses threads for concurrency"
+        feedback: "Incorrect. Python's threading model is different from Go's goroutines."
+        correct: no
+      - answer: "Both Go and Python rely on processes for concurrency"
+        feedback: "Incorrect. Go's goroutines offer a different concurrency model compared to Python."
+        correct: no
+
