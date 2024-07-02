@@ -64,7 +64,7 @@ class Generator:
         messages = self.create_setup_messages(self.prompt_dir)
         messages.append(self.create_message("user", prompt))
 
-        logger.info(f"Sending prompt:\n{pprint.pformat(messages)}")
+        # logger.info(f"Sending prompt:\n{pprint.pformat(messages)}")
 
         generated_page = f"MY GENERATED PAGE at {util.get_time()}\n" # Dummy for avoiding using Chat GPT API
         # messages, generated_page = self.fetch_gpt_response(prompt, messages)
@@ -80,7 +80,8 @@ class Generator:
             title = content['title']
 
             if not self.is_page(content):
-                subpath = os.path.join(path, "content")
+                subpath = os.path.join(path, title)
+                os.makedirs(subpath, exist_ok=True)
                 self.generate_contents(subpath, content['content'])
                 logger.info(f"Generated unit {title}")
                 logger.info(f"At {subpath}")
