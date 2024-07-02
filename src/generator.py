@@ -11,6 +11,7 @@ class Generator:
         self.prompt_dir = prompt_dir
         self.generation_dir = generation_dir
         self.course = SkillmapParser(skillmap_dir, self.INFO_FILE).parse_course()
+        self.container_names = ["Unit", "Module", "Section"]
 
     def create_message(self, role:str, message:str) -> dict[str,str]:
         return { "role": role, "content": message }
@@ -105,4 +106,19 @@ class Generator:
                 util.write_file(page_file_path, f"# ---------- NEW PAGE (at {util.get_time()})\n\n")
                 util.write_file(page_file_path, improved_page)
                 util.write_file(page_file_path, "\n\n")
+    
+    def create_dir_name(self, prefix, title) -> str:
+        return util.sanitize_special_chars(f"{prefix}_{title}").lower().strip()
                 
+    def generate_course(self):
+        course_dir = util.get_subpath(f"{self.generation_dir}/{self.create_dir_name('', self.course['title'])}")
+        os.makedirs(course_dir, exist_ok=True)
+        names = [name for name in self.container_names]
+        prefix = names.pop(0)
+        for i, unit in enumerate(self.course['units']):
+            title = unit['title']
+            content = unit['content']
+            dir_name = self.create_dir_name(f"{prefix}-{i+1}", title)
+            content_path = os.path.join(course_dir, dir_name)
+            os.makedirs(content_path, exist_ok=True)
+            self.generate_contents(content_path, content)
