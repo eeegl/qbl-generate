@@ -75,16 +75,26 @@ class Generator:
 
     def is_page(self, obj:dict) -> bool:
        return False if 'content' in obj else True
+    
+    def create_dir_name(self, prefix, title) -> str:
+        return util.sanitize_special_chars(f"{prefix}_{title}").lower().strip()
 
-    def generate_contents(self, path:str, contents:list[dict]) -> None:
-        for content in contents:
+    def create_course_dir_name(self):
+        prefix = util.get_date_time()
+        title = self.course['title']
+        return self.create_dir_name(prefix, title)
+
+    def generate_contents(self, path:str, contents:list[dict], names:list[str]) -> None:
+        prefix = names.pop(0) if len(names) > 1 else names[0]
+        logger.info(f"prefix={prefix}")
+        for i, content in enumerate(contents):
             title = content['title']
 
             if not self.is_page(content):
-                subpath = os.path.join(path, title)
-                os.makedirs(subpath, exist_ok=True)
-                self.generate_contents(subpath, content['content'])
-                logger.info(f"Generated unit {title}")
+                dir_name = self.create_dir_name(f"{prefix}-{i+1}", title)
+                subpath = os.path.join(path, dir_name)
+                self.generate_contents(subpath, content['content'], names)
+                logger.info(f"Generated unit {dir_name}")
                 logger.info(f"At {subpath}")
             else:
                 page = content
@@ -106,19 +116,15 @@ class Generator:
                 util.write_file(page_file_path, f"# ---------- NEW PAGE (at {util.get_time()})\n\n")
                 util.write_file(page_file_path, improved_page)
                 util.write_file(page_file_path, "\n\n")
-    
-    def create_dir_name(self, prefix, title) -> str:
-        return util.sanitize_special_chars(f"{prefix}_{title}").lower().strip()
-                
+
     def generate_course(self):
-        course_dir = util.get_subpath(f"{self.generation_dir}/{self.create_dir_name('', self.course['title'])}")
-        os.makedirs(course_dir, exist_ok=True)
-        names = [name for name in self.container_names]
-        prefix = names.pop(0)
+        util.create_dir(self.generation_dir, self.create_course_dir_name())
         for i, unit in enumerate(self.course['units']):
+            container_names = [name for name in self.container_names]
+            prefix = container_names.pop(0)
             title = unit['title']
             content = unit['content']
             dir_name = self.create_dir_name(f"{prefix}-{i+1}", title)
-            content_path = os.path.join(course_dir, dir_name)
-            os.makedirs(content_path, exist_ok=True)
-            self.generate_contents(content_path, content)
+            dir_path = os.path.join(self.generation_dir, dir_name)
+            util.create_dir(dir_path)
+            self.generate_contents(dir_path, content, container_names)

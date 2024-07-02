@@ -45,6 +45,10 @@ def write_file(path:str, content:str, mode:str = "a") -> None:
 #     write_file(path, content, "w")
 #     write_file(path, original_content, "a")
 
+def create_dir(*paths):
+    dir_path = os.path.join(*paths)
+    os.makedirs(dir_path, exist_ok=True)
+
 def parse_yaml(path):
     with open(path, "r") as file:
             parsed = yaml.safe_load(file)
@@ -72,10 +76,9 @@ def get_subpath(subpath:str) -> str:
     return resolved_path
 
 def get_date_time():
-    """ Returns the date and current time (`HH:MM`)."""
-    date = datetime.now().strftime("%Y-%m-%d") # Format current time
-    time = datetime.now().strftime("%H:%M") # Format current time
-    return [date, time]
+    time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S") # Format current time
+    # time = datetime.now().strftime("%H:%M:%S") # Format current time
+    return time
 
 def get_time() -> str:
     """ Returns the current time with seconds (`HH:MM:SS`)."""
@@ -100,4 +103,4 @@ def get_page_description(page:dict[str,str]) -> str:
 
 def sanitize_special_chars(input):
     """ Replace all repeated non-alphanumeric characters with underscores."""
-    return re.sub(r"[^\w]+", "_", input)
+    return re.sub(r"[^\w-]+", "_", input)
