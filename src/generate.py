@@ -5,9 +5,10 @@ from generator import Generator
 SKILLMAP_DIR = util.get_subpath("skillmaps/dd1396/skillmap/")
 PROMPT_DIR = util.get_subpath("prompts/new_prompt/")
 GENERATED_DIR = util.get_subpath("responses/test/")
+
 generator = Generator(SKILLMAP_DIR, PROMPT_DIR, GENERATED_DIR)
 
-page_description = generator.get_page_description(generator.course['units'][0]['content'][0]['content'][1])
+page_description = util.get_page_description(generator.course['units'][0]['content'][0]['content'][1])
 page_file_path = os.path.join(generator.generation_dir, "unit-1", "page-1.yaml")
 
 prompt_subs = {
