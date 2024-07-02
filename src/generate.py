@@ -8,21 +8,27 @@ GENERATED_DIR = util.get_subpath("responses/test/")
 
 generator = Generator(SKILLMAP_DIR, PROMPT_DIR, GENERATED_DIR)
 
-page_description = util.get_page_description(generator.course['units'][0]['content'][0]['content'][1])
-page_file_path = os.path.join(generator.generation_dir, "unit-1", "page-1.yaml")
+title = generator.course['units'][0]['title']
+unit = generator.course['units'][0]['content']
+print(title)
+print(unit)
+generator.generate_contents(GENERATED_DIR, unit)
 
-prompt_subs = {
-    "NUM_QUESTIONS": "10",
-    "QUESTION_TYPE": "MCQ",
-    "DESCRIPTION": str(page_description),
-}
-page = generator.generate_page("prompt.md", prompt_subs)
+# page_description = util.get_page_description(generator.course['units'][0]['content'][0]['content'][1])
+# page_file_path = os.path.join(generator.generation_dir, "unit-1", "page-1.yaml")
 
-improvement_subs = {
-    "PAGE": page,
-}
+# prompt_subs = {
+#     "NUM_QUESTIONS": "10",
+#     "QUESTION_TYPE": "MCQ",
+#     "DESCRIPTION": str(page_description),
+# }
+# page = generator.generate_page("prompt.md", prompt_subs)
 
-improved_page = generator.generate_page("improvement.md", improvement_subs)
-util.write_file(page_file_path, f"# ---------- NEW PAGE (at {util.get_time()})\n\n")
-util.write_file(page_file_path, improved_page)
-util.write_file(page_file_path, "\n\n")
+# improvement_subs = {
+#     "PAGE": page,
+# }
+
+# improved_page = generator.generate_page("improvement.md", improvement_subs)
+# util.write_file(page_file_path, f"# ---------- NEW PAGE (at {util.get_time()})\n\n")
+# util.write_file(page_file_path, improved_page)
+# util.write_file(page_file_path, "\n\n")

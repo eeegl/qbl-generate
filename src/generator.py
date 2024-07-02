@@ -66,9 +66,42 @@ class Generator:
 
         logger.info(f"Sending prompt:\n{pprint.pformat(messages)}")
 
-        # generated_page = f"MY GENERATED PAGE at {util.get_time()}\n" # Dummy for avoiding using Chat GPT API
-        messages, generated_page = self.fetch_gpt_response(prompt, messages)
+        generated_page = f"MY GENERATED PAGE at {util.get_time()}\n" # Dummy for avoiding using Chat GPT API
+        # messages, generated_page = self.fetch_gpt_response(prompt, messages)
 
         logger.info(f"Received response:\n{generated_page}")
         return generated_page
 
+    def is_page(self, obj:dict) -> bool:
+       return False if 'content' in obj else True
+
+    def generate_contents(self, path:str, contents:list[dict]) -> None:
+        for content in contents:
+            title = content['title']
+
+            if not self.is_page(content):
+                subpath = os.path.join(path, "content")
+                self.generate_contents(subpath, content['content'])
+                logger.info(f"Generated unit {title}")
+                logger.info(f"At {subpath}")
+            else:
+                page = content
+                page_description = util.get_page_description(page)
+                page_file_path = os.path.join(path, f"{page['title']}.yaml")
+
+                prompt_subs = {
+                    "NUM_QUESTIONS": "10",
+                    "QUESTION_TYPE": "MCQ",
+                    "DESCRIPTION": str(page_description),
+                }
+                page = self.generate_page("prompt.md", prompt_subs)
+
+                improvement_subs = {
+                    "PAGE": page,
+                }
+
+                improved_page = self.generate_page("improvement.md", improvement_subs)
+                util.write_file(page_file_path, f"# ---------- NEW PAGE (at {util.get_time()})\n\n")
+                util.write_file(page_file_path, improved_page)
+                util.write_file(page_file_path, "\n\n")
+                
