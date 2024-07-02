@@ -1,0 +1,173 @@
+# ---------- NEW PAGE (at 17:07:32)
+
+objectives:
+  - "Apply advanced concurrent programming techniques"
+
+questions:
+  - number: 1
+    type: "Multiple Choice Question"
+    question: "What is the primary purpose of using fan-in and fan-out patterns in concurrent programming?"
+    skills:
+      - skill: "Implement fan-in and fan-out patterns"
+    options:
+      - answer: "To facilitate efficient workload distribution among multiple goroutines"
+        feedback: "Correct! Fan-in and fan-out patterns aid in distributing work effectively among goroutines."
+        correct: yes
+      - answer: "To ensure sequential execution of goroutines"
+        feedback: "Incorrect. Fan-in and fan-out focus on parallelism, not sequential execution."
+        correct: no
+      - answer: "To limit the number of goroutines for better resource management"
+        feedback: "Incorrect. Fan-in and fan-out are not designed to restrict goroutine count but to handle multiple goroutines efficiently."
+        correct: no
+
+  - number: 2
+    type: "Multiple Choice Question"
+    question: "How do contexts contribute to the management of concurrency in Golang?"
+    skills:
+      - skill: "Manage concurrency with contexts"
+    options:
+      - answer: "By enabling cancellation signals for goroutines sharing the same context"
+        feedback: "Correct! Contexts support cancellation signals and the sharing of values among goroutines."
+        correct: yes
+      - answer: "By automatically adjusting the concurrency level based on workload"
+        feedback: "Incorrect. Contexts focus on managing values and deadlines, not adjusting concurrency dynamically."
+        correct: no
+      - answer: "By providing detailed control over hardware threads for optimum scheduling"
+        feedback: "Incorrect. Contexts abstract away hardware-level details for easier management."
+        correct: no
+
+  - number: 3
+    type: "Multiple Choice Question"
+    question: "Which approach is recommended for error handling in concurrent programs using Golang?"
+    skills:
+      - skill: "Handle errors in concurrent programs"
+    options:
+      - answer: "Utilizing channels to communicate errors between concurrent goroutines"
+        feedback: "Correct! Channels are commonly used to propagate errors effectively in concurrent programs."
+        correct: yes
+      - answer: "Log errors exclusively to a centralized log file for monitoring"
+        feedback: "Incorrect. While logging errors is useful, it is not the sole recommended error handling approach in concurrency."
+        correct: no
+      - answer: "Ignoring errors to prioritize overall program performance"
+        feedback: "Incorrect. Ignoring errors can lead to unforeseen issues in concurrent programs."
+        correct: no
+
+  - number: 4
+    type: "Multiple Choice Question"
+    question: "How do fan-in and fan-out patterns enhance the efficiency of concurrent programs?"
+    skills:
+      - skill: "Implement fan-in and fan-out patterns"
+      - skill: "Manage concurrency with contexts"
+    options:
+      - answer: "By allowing multiple goroutines to collaborate on different tasks and merge results"
+        feedback: "Correct! Fan-in and fan-out patterns enable parallel processing and result combination for efficiency."
+        correct: yes
+      - answer: "By minimizing the number of goroutines through systematic management"
+        feedback: "Incorrect. Fan-in and fan-out are more about workload distribution and parallelism than reducing goroutine count."
+        correct: no
+      - answer: "By enforcing a strict execution order for all goroutines involved"
+        feedback: "Incorrect. Fan-in and fan-out patterns focus on parallelism, not enforcing sequential execution."
+        correct: no
+
+  - number: 5
+    type: "Multiple Choice Question"
+    question: "Which technique is commonly employed in Golang to detect context cancellations during concurrent operations?"
+    skills:
+      - skill: "Manage concurrency with contexts"
+      - skill: "Handle errors in concurrent programs"
+    options:
+      - answer: "Checking the context's Done channel for closure status"
+        feedback: "Correct! Monitoring the Done channel helps goroutines detect context cancellations."
+        correct: yes
+      - answer: "Using defer statements within goroutines for cancellation checks"
+        feedback: "Incorrect. Defer statements are not directly related to context cancellation detection."
+        correct: no
+      - answer: "Applying timeouts to goroutines for managing operation durations"
+        feedback: "Incorrect. Timeouts are more about setting deadlines than detecting context cancellations."
+        correct: no
+
+  - number: 6
+    type: "Multiple Choice Question"
+    question: "What is the primary benefit of error channels in Golang regarding concurrent programming?"
+    skills:
+      - skill: "Handle errors in concurrent programs"
+      - skill: "Implement fan-in and fan-out patterns"
+    options:
+      - answer: "Centralizing error management and facilitating non-blocking error propagation"
+        feedback: "Correct! Error channels aid in centralizing error handling and enabling non-blocking error propagation."
+        correct: yes
+      - answer: "Synchronizing goroutines to ensure error-free execution"
+        feedback: "Incorrect. Error channels focus on error propagation, not synchronization between goroutines."
+        correct: no
+      - answer: "Intercepting errors to prevent them from being displayed to users"
+        feedback: "Incorrect. Error channels are designed for passing errors along the goroutine chain."
+        correct: no
+
+  - number: 7
+    type: "Multiple Choice Question"
+    question: "How do contexts assist in managing deadlines during concurrent operations in Golang?"
+    skills:
+      - skill: "Manage concurrency with contexts"
+      - skill: "Implement fan-in and fan-out patterns"
+    options:
+      - answer: "Transferring deadlines across operations to ensure timely completion"
+        feedback: "Correct! Contexts pass deadlines to ensure operations respect time constraints."
+        correct: yes
+      - answer: "Automatically extending deadline periods for pending operations"
+        feedback: "Incorrect. Contexts propagate deadlines rather than extending them automatically."
+        correct: no
+      - answer: "Creating distinct contexts for individual goroutines to manage deadlines"
+        feedback: "Incorrect. Contexts streamline deadline communication rather than isolating deadlines per goroutine."
+        correct: no
+
+  - number: 8
+    type: "Multiple Choice Question"
+    question: "Which statement best describes the role of error handling in a fan-in pattern?"
+    skills:
+      - skill: "Handle errors in concurrent programs"
+      - skill: "Implement fan-in and fan-out patterns"
+    options:
+      - answer: "Aggregating and passing errors alongside results within a fan-in pattern"
+        feedback: "Correct! Error handling in fan-in patterns involves collecting and propagating errors along with the main results."
+        correct: yes
+      - answer: "Batching errors and reporting them collectively to a central logger"
+        feedback: "Incorrect. Fan-in patterns concentrate on result combination, not specifically error handling."
+        correct: no
+      - answer: "Automatically discarding errors to maintain the main processing flow"
+        feedback: "Incorrect. Discarding errors in fan-in patterns would result in incomplete executions."
+        correct: no
+
+  - number: 9
+    type: "Multiple Choice Question"
+    question: "How does the use of contexts improve the error handling process in concurrent programs?"
+    skills:
+      - skill: "Manage concurrency with contexts"
+      - skill: "Handle errors in concurrent programs"
+    options:
+      - answer: "Facilitating efficient propagation of error information across goroutines"
+        feedback: "Correct! Contexts assist in effective error propagation across concurrent operations."
+        correct: yes
+      - answer: "Automatically recovering from errors to maintain continuous execution"
+        feedback: "Incorrect. Contexts focus on error communication rather than automatic error recovery."
+        correct: no
+      - answer: "Adding error checks to goroutines for immediate error resolution"
+        feedback: "Incorrect. Error checks are part of goroutine logic and are not directly tied to contexts."
+        correct: no
+
+  - number: 10
+    type: "Multiple Choice Question"
+    question: "What is the primary objective of error fan-out in the context of fan-out patterns?"
+    skills:
+      - skill: "Handle errors in concurrent programs"
+      - skill: "Implement fan-in and fan-out patterns"
+    options:
+      - answer: "Distributing errors to multiple handlers for parallel error processing"
+        feedback: "Correct! Error fan-out allows distributing errors to multiple handlers for concurrent error handling."
+        correct: yes
+      - answer: "Isolating errors to prevent disruption to the main program flow"
+        feedback: "Incorrect. Error fan-out is focused on parallelizing error handling, not isolating errors."
+        correct: no
+      - answer: "Consolidating errors for collective reporting at the end of the program"
+        feedback: "Incorrect. Error fan-out emphasizes distributed error processing rather than consolidation for reporting."
+        correct: no
+

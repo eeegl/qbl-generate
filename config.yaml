@@ -6,7 +6,7 @@
 #
 
 # Root directory for the script. Must be absolute.
-root_dir: "/Users/orn/Documents/kth/da150x-kex/qbl-generate"
+root_dir: "/Users/orn/Documents/qbl/qbl-generate"
 
 # Directory for storing the prompts. Must be relative to "root_dir".
 prompts_dir: "prompts/" 
@@ -15,7 +15,7 @@ prompts_dir: "prompts/"
 responses_dir: "responses/"
 
 # Path to the skillmap. Must be located in "root_dir".
-skillmap_file: "skillmap.yaml"
+skillmap_file: "skillmap/skillmap-old/dd1396.yaml"
 
 # The default prompt file to use. Needs to be stored in "prompts_dir".
 # 

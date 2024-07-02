@@ -1,14 +1,9 @@
-import sys
-from setup import setup
-from prompting import generate_questions
+import util
+from generator import Generator
 
-if __name__ == "__main__":
-    config, skillmap = setup()
+SKILLMAP_DIR = util.get_subpath("skillmaps/dd1396/skillmap/")
+PROMPT_DIR = util.get_subpath("prompts/new-prompt/")
+GENERATED_DIR = util.get_subpath("generated-courses/")
 
-    try:
-        generate_questions(config, skillmap)
-        print("Generation done!")
-    except Exception as e:
-        # raise e # Uncomment for more verbose errors
-        print(e)
-        sys.exit(1)
+generator = Generator(SKILLMAP_DIR, PROMPT_DIR, GENERATED_DIR)
+generator.generate_course()

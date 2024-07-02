@@ -1,0 +1,172 @@
+# ---------- NEW PAGE (at 17:05:03)
+
+- number: 1
+  type: "Multiple Choice Question"
+  question: "What is the primary benefit of using goroutines in Golang?"
+  skills:
+    - skill: "Create and manage goroutines"
+  options:
+    - answer: "To achieve concurrent execution of functions easily"
+      feedback: "Correct! Goroutines enable the easy execution of functions concurrently."
+      correct: yes
+    - answer: "To synchronize the execution of functions"
+      feedback: "Incorrect. Goroutines focus on concurrency, not synchronization."
+      correct: no
+    - answer: "To handle error conditions in functions"
+      feedback: "Incorrect. Goroutines are primarily for enabling concurrency, not error handling."
+      correct: no
+
+- number: 2
+  type: "Multiple Choice Question"
+  question: "How can goroutines communicate with each other in Golang?"
+  skills:
+    - skill: "Create and manage goroutines"
+    - skill: "Use channels for communication"
+  options:
+    - answer: "Through the use of channels"
+      feedback: "Correct! Channels facilitate communication between goroutines in Golang."
+      correct: yes
+    - answer: "By directly accessing another goroutine's memory address"
+      feedback: "Incorrect. Direct memory access is unsafe and discouraged in goroutine communication."
+      correct: no
+    - answer: "By sharing global variables"
+      feedback: "Incorrect. Sharing global variables can lead to race conditions, not safe communication."
+      correct: no
+
+- number: 3
+  type: "Multiple Choice Question"
+  question: "What is the role of mutexes in preventing race conditions in Go programs?"
+  skills:
+    - skill: "Use channels for communication"
+    - skill: "Avoid race conditions using mutexes"
+  options:
+    - answer: "To ensure only one goroutine accesses shared data at a time to prevent race conditions"
+      feedback: "Correct! Mutexes help control access to shared data, thus avoiding race conditions."
+      correct: yes
+    - answer: "To speed up concurrent programs"
+      feedback: "Incorrect. Mutexes are for data synchronization, not for improving speed."
+      correct: no
+    - answer: "To create multiple instances of shared data"
+      feedback: "Incorrect. Mutexes ensure safe access to shared data, not creation of instances."
+      correct: no
+
+- number: 4
+  type: "Multiple Choice Question"
+  question: "When is it suitable to use goroutines in Golang?"
+  skills:
+    - skill: "Create and manage goroutines"
+    - skill: "Avoid race conditions using mutexes"
+  options:
+    - answer: "When tasks can run concurrently without accessing shared data"
+      feedback: "Correct! Goroutines are ideal for independent tasks that can run concurrently."
+      correct: yes
+    - answer: "Only when synchronization between tasks is required"
+      feedback: "Incorrect. Goroutines can be used independently of explicit synchronization needs."
+      correct: no
+    - answer: "Never, as they always result in race conditions"
+      feedback: "Incorrect. Properly managed goroutines can avoid race conditions using synchronization."
+      correct: no
+
+- number: 5
+  type: "Multiple Choice Question"
+  question: "How does a channel enforce synchronized communication between goroutines?"
+  skills:
+    - skill: "Use channels for communication"
+    - skill: "Avoid race conditions using mutexes"
+  options:
+    - answer: "By allowing only one goroutine to send or receive data at a time"
+      feedback: "Correct! Channels ensure synchronization by managing data exchange between goroutines."
+      correct: yes
+    - answer: "By duplicating data for each receiving goroutine"
+      feedback: "Incorrect. Channels maintain single data ownership, not duplication for each goroutine."
+      correct: no
+    - answer: "By allowing direct memory access between goroutines"
+      feedback: "Incorrect. Channels restrict direct memory access to ensure synchronization."
+      correct: no
+
+- number: 6
+  type: "Multiple Choice Question"
+  question: "Why is addressing race conditions crucial in concurrent Go programs?"
+  skills:
+    - skill: "Create and manage goroutines"
+    - skill: "Use channels for communication"
+  options:
+    - answer: "To prevent unforeseen outcomes and maintain data integrity"
+      feedback: "Correct! Race conditions can lead to unpredictability and data corruption."
+      correct: yes
+    - answer: "To optimize execution speed"
+      feedback: "Incorrect. Data consistency is more important than speed in concurrent programs."
+      correct: no
+    - answer: "To enable multiple goroutines to access shared data simultaneously"
+      feedback: "Incorrect. Unrestricted access can lead to data inconsistency and race conditions."
+      correct: no
+
+- number: 7
+  type: "Multiple Choice Question"
+  question: "What is the outcome when two goroutines write to a shared variable simultaneously without synchronization?"
+  skills:
+    - skill: "Create and manage goroutines"
+    - skill: "Avoid race conditions using mutexes"
+  options:
+    - answer: "A data race occurs, resulting in unpredictable outcomes"
+      feedback: "Correct! Concurrent writes without synchronization can cause data races."
+      correct: yes
+    - answer: "The writes are queued and executed sequentially"
+      feedback: "Incorrect. Without synchronization, write order is non-deterministic."
+      correct: no
+    - answer: "The program abruptly terminates"
+      feedback: "Incorrect. Race conditions may lead to errors but do not necessarily halt the program immediately."
+      correct: no
+
+- number: 8
+  type: "Multiple Choice Question"
+  question: "How does a mutex prevent race conditions in Golang?"
+  skills:
+    - skill: "Use channels for communication"
+    - skill: "Avoid race conditions using mutexes"
+  options:
+    - answer: "By allowing exclusive access to a shared resource by one goroutine at a time"
+      feedback: "Correct! Mutexes ensure exclusive access, thus preventing race conditions."
+      correct: yes
+    - answer: "By enhancing the speed of goroutines"
+      feedback: "Incorrect. Mutexes focus on synchronization, not speed enhancement."
+      correct: no
+    - answer: "By enabling multiple goroutines simultaneous access to the resource"
+      feedback: "Incorrect. Simultaneous access can lead to race conditions, which mutexes prevent."
+      correct: no
+
+- number: 9
+  type: "Multiple Choice Question"
+  question: "Why are channels preferred over shared memory for goroutine communication in Golang?"
+  skills:
+    - skill: "Use channels for communication"
+    - skill: "Avoid race conditions using mutexes"
+  options:
+    - answer: "Channels provide a safe communication method without manual locking"
+      feedback: "Correct! Channels offer safe communication without the need for manual locking."
+      correct: yes
+    - answer: "Shared memory is faster and more efficient in communication"
+      feedback: "Incorrect. Shared memory requires careful synchronization to prevent race conditions."
+      correct: no
+    - answer: "Channels restrict communication, slowing down execution"
+      feedback: "Incorrect. Channels allow efficient and synchronized communication between goroutines."
+      correct: no
+
+- number: 10
+  type: "Multiple Choice Question"
+  question: "How can you prevent deadlocks when using mutexes in Golang?"
+  skills:
+    - skill: "Create and manage goroutines"
+    - skill: "Avoid race conditions using mutexes"
+  options:
+    - answer: "By maintaining a consistent locking order and limiting lock duration"
+      feedback: "Correct! Deadlocks can be avoided by following a unified locking strategy and managing lock durations."
+      correct: yes
+    - answer: "By releasing all locks simultaneously"
+      feedback: "Incorrect. Simultaneous lock release can lead to inconsistencies and potential deadlocks."
+      correct: no
+    - answer: "By increasing the number of used mutexes in the program"
+      feedback: "Incorrect. Deadlock prevention lies in proper usage, not in increasing the quantity of mutexes."
+      correct: no
+```
+

@@ -2,13 +2,13 @@
 # This unit covers parallel and concurrent programming using Golang.
 # It introduces foundational concepts and practical skills for effective concurrent programming.
 title: "Parallel and Concurrent Programming in Golang"
-modules:
+content:
 
   # MODULE
   # This module introduces learners to the basics of concurrency in Golang,
   # focusing on understanding goroutines and channels.
   - title: "Introduction to Concurrency"
-    pages:
+    content:
 
       # PAGE
       # This page covers the fundamentals of concurrent programming in Golang,
@@ -24,7 +24,7 @@ modules:
   # This module dives deeper into common issues in concurrent programming,
   # such as data races, deadlocks, and synchronization techniques.
   - title: "Common Issues in Concurrent Programming"
-    pages:
+    content:
 
       # PAGE
       # This page explains how to detect and resolve data races and deadlocks,
@@ -40,7 +40,7 @@ modules:
   # This module explores advanced techniques and patterns in concurrent programming,
   # including fan-in/fan-out and context handling.
   - title: "Advanced Concurrent Programming Techniques"
-    pages:
+    content:
 
       # PAGE
       # This page covers advanced concurrency patterns and best practices,

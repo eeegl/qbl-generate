@@ -1,0 +1,186 @@
+# ---------- NEW PAGE (at 17:13:28)
+
+objectives:
+  - "Optimize MapReduce applications for speed and scalability in Go"
+
+questions:
+  - number: 1
+    type: "Multiple Choice Question"
+    question: "What is the purpose of partitioning data in a MapReduce application?"
+    skills:
+      - skill: "Partition data for optimal parallelism"
+    options:
+      - answer: "To distribute workloads evenly across parallel workers"
+        feedback: "Correct! Data partitioning helps achieve balanced workloads for efficient parallel processing."
+        correct: yes
+      - answer: "To consolidate all data for faster processing"
+        feedback: "Incorrect. Partitioning is done to enable parallel processing, not consolidate data."
+        correct: no
+      - answer: "To remove redundant data entries"
+        feedback: "Incorrect. Partitioning is not primarily for removing redundant data entries."
+        correct: no
+
+  - number: 2
+    type: "Multiple Choice Question"
+    question: "Which parameter can be adjusted to increase parallelism in a MapReduce application?"
+    skills:
+      - skill: "Tune parallelism parameters for performance"
+    options:
+      - answer: "Number of concurrent goroutines"
+        feedback: "Correct! Increasing the number of concurrent goroutines can enhance parallelism."
+        correct: yes
+      - answer: "Time taken for each function call"
+        feedback: "Incorrect. Function call time does not directly affect parallelism."
+        correct: no
+      - answer: "Overall memory allocated"
+        feedback: "Incorrect. Memory allocation does not directly impact parallelism."
+        correct: no
+
+  - number: 3
+    type: "Multiple Choice Question"
+    question: "What metrics are commonly used to evaluate the scalability of a MapReduce application?"
+    skills:
+      - skill: "Evaluate scalability and efficiency metrics"
+    options:
+      - answer: "Speedup and efficiency"
+        feedback: "Correct! Speedup and efficiency are key metrics for assessing scalability."
+        correct: yes
+      - answer: "Total lines of code"
+        feedback: "Incorrect. Lines of code do not directly reflect the scalability of an application."
+        correct: no
+      - answer: "Overall project budget"
+        feedback: "Incorrect. Project budget is not a scalability metric for MapReduce applications."
+        correct: no
+
+  - number: 4
+    type: "Multiple Choice Question"
+    question: "How does partitioning contribute to the efficiency of a MapReduce application?"
+    skills:
+      - skill: "Partition data for optimal parallelism"
+      - skill: "Evaluate scalability and efficiency metrics"
+    options:
+      - answer: "Reduces data shuffling and network traffic"
+        feedback: "Correct! Effective partitioning helps minimize data movement and communication overhead."
+        correct: yes
+      - answer: "Increases the size of intermediate data"
+        feedback: "Incorrect. Partitioning aims to reduce bandwidth consumption, not increase data size."
+        correct: no
+      - answer: "Delays task completion due to excessive synchronization"
+        feedback: "Incorrect. Proper partitioning should reduce, not increase, synchronization delays."
+        correct: no
+
+  - number: 5
+    type: "Multiple Choice Question"
+    question: "Which factor is crucial for achieving both speed and scalability in a MapReduce application?"
+    skills:
+      - skill: "Tune parallelism parameters for performance"
+      - skill: "Evaluate scalability and efficiency metrics"
+    options:
+      - answer: "Properly setting the degree of parallelism"
+        feedback: "Correct! Adjusting the degree of parallelism is key to balancing speed and scalability."
+        correct: yes
+      - answer: "Using larger input datasets"
+        feedback: "Incorrect. Dataset size alone does not guarantee speed and scalability balance."
+        correct: no
+      - answer: "Increasing the number of data partitions"
+        feedback: "Incorrect. Increasing partitions can improve parallelism but may not ensure speed and scalability balance."
+        correct: no
+
+  - number: 6
+    type: "Multiple Choice Question"
+    question: "What is the role of scalability analysis in optimizing a MapReduce application?"
+    skills:
+      - skill: "Partition data for optimal parallelism"
+      - skill: "Evaluate scalability and efficiency metrics"
+    options:
+      - answer: "Identifying performance bottlenecks under varying workloads"
+        feedback: "Correct! Scalability analysis helps pinpoint limitations and bottlenecks in different scenarios."
+        correct: yes
+      - answer: "Optimizing the code structure for readability"
+        feedback: "Incorrect. Code readability is important but not the main focus of scalability analysis."
+        correct: no
+      - answer: "Increasing hardware resources without analysis"
+        feedback: "Incorrect. Simply adding resources without analysis may not address the root scalability issues."
+        correct: no
+
+  - number: 7
+    type: "Multiple Choice Question"
+    question: "Which technique can enhance the partitioning process for better parallelism in MapReduce?"
+    skills:
+      - skill: "Partition data for optimal parallelism"
+    options:
+      - answer: "Using a hashing function to distribute data evenly"
+        feedback: "Correct! Hashing functions can evenly distribute data among partitions for optimal parallelism."
+        correct: yes
+      - answer: "Merging all data before distribution"
+        feedback: "Incorrect. Merging data before partitioning would hinder parallel processing."
+        correct: no
+      - answer: "Randomly assigning data to partitions"
+        feedback: "Incorrect. Random assignment may not ensure balanced workloads for parallel processing."
+        correct: no
+
+  - number: 8
+    type: "Multiple Choice Question"
+    question: "What factor should be considered when tuning parallelism parameters for optimal performance in MapReduce?"
+    skills:
+      - skill: "Tune parallelism parameters for performance"
+    options:
+      - answer: "Available hardware resources"
+        feedback: "Correct! Hardware resources play a crucial role in determining optimal parallelism settings."
+        correct: yes
+      - answer: "Frequency of software updates"
+        feedback: "Incorrect. Software update frequency does not directly impact parallelism tuning."
+        correct: no
+      - answer: "Number of project stakeholders"
+        feedback: "Incorrect. Project stakeholders are not directly related to parallelism parameter tuning."
+        correct: no
+
+  - number: 9
+    type: "Multiple Choice Question"
+    question: "How does the choice of partitioning algorithm affect the scalability of a MapReduce application?"
+    skills:
+      - skill: "Partition data for optimal parallelism"
+      - skill: "Evaluate scalability and efficiency metrics"
+    options:
+      - answer: "Impacts the balance of workload distribution and communication overhead"
+        feedback: "Correct! The partitioning algorithm choice affects how data is distributed and communicated for scalability."
+        correct: yes
+      - answer: "Determines the programming language for the application"
+        feedback: "Incorrect. Partitioning algorithm choice is more about data handling than programming language selection."
+        correct: no
+      - answer: "Affects the visual design of the user interface"
+        feedback: "Incorrect. The partitioning algorithm mainly influences data handling, not UI design."
+        correct: no
+
+  - number: 10
+    type: "Multiple Choice Question"
+    question: "Why is it important to monitor efficiency metrics during MapReduce application development?"
+    skills:
+      - skill: "Evaluate scalability and efficiency metrics"
+    options:
+      - answer: "To identify performance bottlenecks and optimize resource usage"
+        feedback: "Correct! Monitoring efficiency metrics helps address bottlenecks and enhance resource utilization."
+        correct: yes
+      - answer: "To increase the project development timeline"
+        feedback: "Incorrect. Efficiency metrics monitoring focuses on optimization, not timeline extension."
+        correct: no
+      - answer: "To add unnecessary complexity to the codebase"
+        feedback: "Incorrect. Monitoring metrics aims to simplify and improve the application, not add complexity."
+        correct: no
+
+  - number: 11
+    type: "Multiple Choice Question"
+    question: "What is an advantage of using combiners in MapReduce?"
+    skills:
+      - skill: "Optimize data processing in MapReduce"
+    options:
+      - answer: "Reduce the volume of data shuffled between mappers and reducers"
+        feedback: "Correct! Combiners help reduce data shuffling, improving efficiency in MapReduce."
+        correct: yes
+      - answer: "Increase the overall execution time by introducing an additional step"
+        feedback: "Incorrect. Combiners typically reduce execution time by processing data locally before shuffling."
+        correct: no
+      - answer: "Create dependencies between mapper and reducer tasks"
+        feedback: "Incorrect. Combiners aim to enhance performance, not introduce unnecessary dependencies."
+        correct: no
+

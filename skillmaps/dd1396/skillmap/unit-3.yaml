@@ -1,15 +1,14 @@
 # UNIT
 # This unit introduces learners to parallel and concurrent programming using Go (Golang).
 # It covers foundational concepts and practical techniques to harness parallelism and concurrency for performance optimization.
-
 title: "Parallel and Concurrent Programming in Go"
-modules:
+content:
 
   # MODULE
   # This module provides an overview of concurrent programming in Go, including basic concepts and mechanisms.
   # It prepares learners to understand how Go handles concurrency compared to traditional threading models.
   - title: "Introduction to Concurrent Programming"
-    pages:
+    content:
 
       # PAGE
       # This page covers the fundamentals of concurrency in Go, including goroutines and channels.
@@ -34,7 +33,7 @@ modules:
   # This module focuses on parallel programming concepts in Go, emphasizing performance optimization through parallelism.
   # It covers techniques for parallel execution of tasks and leveraging multicore processors effectively.
   - title: "Parallel Programming Techniques"
-    pages:
+    content:
 
       # PAGE
       # This page introduces techniques for parallelizing computations in Go programs.
@@ -60,7 +59,7 @@ modules:
   # This module covers the MapReduce programming model and its implementation in Go.
   # It focuses on distributed data processing and scalability through parallel computing.
   - title: "MapReduce in Go"
-    pages:
+    content:
 
       # PAGE
       # This page introduces the MapReduce model and its implementation in Go.

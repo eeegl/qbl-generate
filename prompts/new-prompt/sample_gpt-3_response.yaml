@@ -1,0 +1,163 @@
+objectives:
+  - "Understand and use goroutines and channels for concurrent programming"
+
+questions:
+  - number: 1
+    type: "Multiple Choice Question"
+    question: "What is the purpose of using goroutines in Go?"
+    skills:
+        - skill: "Use goroutines to achieve concurrency"
+    options:
+      - answer: "To execute functions concurrently and independently"
+        feedback: "Correct! Goroutines enable concurrent execution of functions."
+        correct: yes
+      - answer: "To synchronize data across multiple threads"
+        feedback: "Incorrect. Goroutines are used for concurrency, not for synchronization across threads."
+        correct: no
+      - answer: "To execute functions sequentially"
+        feedback: "Incorrect. Goroutines allow concurrent execution, not sequential."
+        correct: no
+
+  - number: 2
+    type: "Multiple Choice Question"
+    question: "Which keyword is used to create a new goroutine in Go?"
+    skills:
+        - skill: "Use goroutines to achieve concurrency"
+    options:
+      - answer: "go"
+        feedback: "Correct! The 'go' keyword is used to create a new goroutine."
+        correct: yes
+      - answer: "async"
+        feedback: "Incorrect. 'async' is not a keyword for creating goroutines in Go."
+        correct: no
+      - answer: "thread"
+        feedback: "Incorrect. 'thread' does not create goroutines in Go."
+        correct: no
+
+  - number: 3
+    type: "Multiple Choice Question"
+    question: "What does a channel provide in Go?"
+    skills:
+        - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "A way for goroutines to communicate and synchronize"
+        feedback: "Correct! Channels are used for communication and synchronization between goroutines."
+        correct: yes
+      - answer: "A mechanism to prevent data races"
+        feedback: "Channels aid in preventing data races, but their primary purpose is communication."
+        correct: no
+      - answer: "A method for defining shared memory"
+        feedback: "Incorrect. Channels are not used for defining shared memory in Go."
+        correct: no
+
+  - number: 4
+    type: "Multiple Choice Question"
+    question: "Which channel operation blocks until data is sent to the channel?"
+    skills:
+        - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "Receiving from a channel"
+        feedback: "Correct! Receiving from a channel blocks until data is available."
+        correct: yes
+      - answer: "Sending to a channel"
+        feedback: "Sending to a channel does not block unless the channel is full."
+        correct: no
+      - answer: "Closing a channel"
+        feedback: "Closing a channel does not block."
+        correct: no
+
+  - number: 5
+    type: "Multiple Choice Question"
+    question: "Which of the following is true about buffered channels in Go?"
+    skills:
+        - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "They allow sending data without blocking up to a buffer limit"
+        feedback: "Correct! Buffered channels allow non-blocking sends up to a certain buffer size."
+        correct: yes
+      - answer: "They block sends until data is received"
+        feedback: "Buffered channels do not block sends until data is received."
+        correct: no
+      - answer: "They are only used for receiving data"
+        feedback: "Buffered channels can be used for both sending and receiving."
+        correct: no
+
+  - number: 6
+    type: "Multiple Choice Question"
+    question: "Which statement about goroutines in Go is true?"
+    skills:
+        - skill: "Use goroutines to achieve concurrency"
+    options:
+      - answer: "Goroutines are lightweight threads managed by the Go runtime"
+        feedback: "Correct! Goroutines are managed by the Go runtime and are lightweight compared to OS threads."
+        correct: yes
+      - answer: "Goroutines are limited to one per CPU core"
+        feedback: "Incorrect. Goroutines are not limited to one per CPU core."
+        correct: no
+      - answer: "Goroutines always execute sequentially"
+        feedback: "Goroutines can execute concurrently, not necessarily sequentially."
+        correct: no
+
+  - number: 7
+    type: "Multiple Choice Question"
+    question: "What happens if a channel is closed in Go?"
+    skills:
+        - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "Subsequent receives from the channel will return zero value"
+        feedback: "Correct! Closing a channel causes subsequent receives to return zero value immediately."
+        correct: yes
+      - answer: "It prevents further sends to the channel"
+        feedback: "Closing a channel does not prevent further sends."
+        correct: no
+      - answer: "It blocks until all data is received from the channel"
+        feedback: "Closing a channel does not block until all data is received."
+        correct: no
+
+  - number: 8
+    type: "Multiple Choice Question"
+    question: "Which statement about channel directionality in Go is correct?"
+    skills:
+        - skill: "Utilize channels for communication between goroutines"
+    options:
+      - answer: "Send-only channels can only be used for sending data"
+        feedback: "Correct! Send-only channels are restricted to sending data."
+        correct: yes
+      - answer: "Receive-only channels can only be used for receiving data"
+        feedback: "Receive-only channels can only receive data, but send-only channels cannot receive."
+        correct: no
+      - answer: "Channels in Go are always bidirectional"
+        feedback: "Channels can have specific directions (send-only or receive-only), not always bidirectional."
+        correct: no
+
+  - number: 9
+    type: "Multiple Choice Question"
+    question: "In Go, how do you wait for all goroutines to finish before proceeding?"
+    skills:
+        - skill: "Use goroutines to achieve concurrency"
+    options:
+      - answer: "Using sync.WaitGroup"
+        feedback: "Correct! sync.WaitGroup is used to wait for all goroutines to finish."
+        correct: yes
+      - answer: "Closing all channels"
+        feedback: "Closing channels is not used for waiting on goroutines to finish."
+        correct: no
+      - answer: "Adding a timeout to the main goroutine"
+        feedback: "Adding a timeout does not ensure all goroutines have finished."
+        correct: no
+
+  - number: 10
+    type: "Multiple Choice Question"
+    question: "What is a common use case for using goroutines in Go?"
+    skills:
+        - skill: "Use goroutines to achieve concurrency"
+    options:
+      - answer: "Handling multiple requests concurrently in a web server"
+        feedback: "Correct! Goroutines are commonly used to handle concurrent requests in Go web servers."
+        correct: yes
+      - answer: "Sequential execution of tasks"
+        feedback: "Goroutines are used for concurrency, not sequential execution."
+        correct: no
+      - answer: "Synchronous communication between functions"
+        feedback: "Goroutines are used for asynchronous, not synchronous communication."
+        correct: no
