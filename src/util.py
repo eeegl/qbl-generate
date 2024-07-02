@@ -6,6 +6,19 @@ from datetime import datetime
 ##############################
 # File handling
 ##############################
+def get_openai_key(key_name = "OPENAI_API_KEY_KTH") -> str:
+    """
+    Helper function that gets the OpenAI API key saved  an environmental variable,
+    by default set to `OPENAI_API_KEY_KTH`.
+
+    NOTE: Make sure that `OPENAI_API_KEY_KTH` is set, or provide an argument
+    if you have it set to another variable name.
+    """
+    key = os.getenv(key_name) 
+    if not key:
+        raise ValueError(f"Environment variable {key_name} is not set.")
+    return key
+
 def get_subpath(subpath:str) -> str:
     script_dir = os.path.dirname(os.path.abspath(__file__))
     resolved_path = os.path.abspath(os.path.join(script_dir, "../", subpath))
@@ -60,7 +73,7 @@ def write_file(path : str,
     return content
 
 def prepend_file(path, content):
-    original_content = read_file(path)
+    original_content = util.read_file(path)
     write_file(path, content, "w")
     write_file(path, original_content, "a")
 
@@ -102,6 +115,12 @@ def get_time() -> str:
     """
     time = datetime.now().strftime("%H:%M:%S") # Format current time
     return time
+
+def sanitize_special_chars(input):
+    """
+    Replace all repeated non-alphanumeric characters with underscores.
+    """
+    return re.sub(r"[^\w]+", "_", input)
 
 def parse_yaml(path):
     with open(path, "r") as file:

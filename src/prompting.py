@@ -1,7 +1,6 @@
-import os
-import re
+import os, re
 from openai import OpenAI, APIConnectionError
-from util import read_file, prepend_file, generate_log, get_time
+import util
 
 ##############################
 # Question generation
@@ -18,7 +17,7 @@ def generate_questions(config : dict[str, str],
        - If both skills and units are given in `config`, skills take precedence.
     """
     prompt_path, improvement_path, responses_dir = get_paths(config)
-    prompt_template = read_file(prompt_path)
+    prompt_template = util.read_file(prompt_path)
     
     skills = config["skills"]
     units = config["units"]
@@ -34,10 +33,10 @@ def generate_questions(config : dict[str, str],
             found_match = True
 
             prompt = insert_skill(prompt_template, skill["aim"])
-            improvement = read_file(improvement_path)
+            improvement = util.read_file(improvement_path)
 
             # API call
-            print(f"--- Sending request (at {get_time()})\n" +
+            print(f"--- Sending request (at {util.get_time()})\n" +
                   f"unit: {unit["name"]}\n" +
                   f"skill: {skill["name"]}")
             response = fetch_gpt_reply(config["gpt_model"],
@@ -46,7 +45,7 @@ def generate_questions(config : dict[str, str],
                                        config["timeout"],
                                        config["improvement_enabled"],
                                        improvement)
-            print(f"--- Request successful (at {get_time()})\n")
+            print(f"--- Request successful (at {util.get_time()})\n")
 
             unit_dir = format_unit_dir_name(unit["name"])
             file_name = format_skill_file_name(skill["name"])
@@ -59,12 +58,12 @@ def generate_questions(config : dict[str, str],
 
             # Writes to the file
             path = os.path.join(responses_dir, unit_dir, file_name)
-            prepend_file(path, response + "\n")
+            util.prepend_file(path, response + "\n")
 
             # Logs metadata
             title = "Response"
-            log = generate_log(title, config)
-            prepend_file(path, log + "\n")
+            log = util.generate_log(title, config)
+            util.prepend_file(path, log + "\n")
     if not found_match:
         raise ValueError("error: given units or skills not found in skillmap, " +
                          "make sure spelling and letter case is correct")
@@ -94,7 +93,7 @@ def fetch_gpt_reply(model: str,
     ]
 
     client = OpenAI(
-        api_key = get_openai_key(),
+        api_key = util.get_openai_key(),
         timeout = timeout
     )
     
@@ -106,7 +105,7 @@ def fetch_gpt_reply(model: str,
         response = fetch_single_response(client, model, messages)
 
         if improve_enabled:
-            print(f"--- Sending improvement request (at {get_time()})")
+            print(f"--- Sending improvement request (at {util.get_time()})")
             messages.append(create_message("assistant", response))
             messages.append(create_message("user", improvement_prompt +
                                            "\n\nMake sure there are " +
@@ -161,7 +160,7 @@ def format_unit_dir_name(unit: str) -> str:
     to underscores. Also makes the name uppercase.
     """
     unit = unit.strip()
-    unit = sanitize_special_chars(unit)
+    unit = util.sanitize_special_chars(unit)
     unit_name = unit.upper()
     return unit_name
 
@@ -174,15 +173,9 @@ def format_skill_file_name(skill: str,
     By default, a `.md` extension is added to the file name.
     """
     skill = skill.strip()
-    skill = sanitize_special_chars(skill)
+    skill = util.sanitize_special_chars(skill)
     file_name = skill.lower() + extension
     return file_name
-
-def sanitize_special_chars(input):
-    """
-    Replace all repeated non-alphanumeric characters with underscores.
-    """
-    return re.sub(r"[^\w]+", "_", input)
 
 def get_paths(config):
     """
@@ -196,16 +189,3 @@ def get_paths(config):
     responses_dir = os.path.join(root, config["responses_dir"])
 
     return [prompt_path, improvement_path, responses_dir]
-
-def get_openai_key(key_name = "OPENAI_API_KEY_KTH") -> str:
-    """
-    Helper function that gets the OpenAI API key saved  an environmental variable,
-    by default set to `OPENAI_API_KEY_KTH`.
-
-    NOTE: Make sure that `OPENAI_API_KEY_KTH` is set, or provide an argument
-    if you have it set to another variable name.
-    """
-    key = os.getenv(key_name) 
-    if not key:
-        raise ValueError(f"Environment variable {key_name} is not set.")
-    return key

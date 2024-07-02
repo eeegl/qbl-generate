@@ -1,7 +1,7 @@
 from functools import wraps
 import logging
 
-LOGGING_LEVEL = logging.DEBUG
+LOGGING_LEVEL = logging.INFO
 
 def log_debug(func):
     @wraps(func)
